@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leads Management - Luxury Realtors Portal</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        navy: { 900: '#060B19', 800: '#0B132B', 700: '#1C2541', 600: '#3A506B' },
+                        gold: { 400: '#F1C40F', 500: '#D4AF37', 600: '#AA8C2C' }
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
+                        'gold-glow': '0 0 15px rgba(212, 175, 55, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #060B19; color: #ffffff; overflow-x: hidden; }
+        .glass-card { background: rgba(11, 19, 43, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); }
+        .glass-panel { background: linear-gradient(135deg, rgba(28, 37, 65, 0.4) 0%, rgba(11, 19, 43, 0.8) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #060B19; }
+        ::-webkit-scrollbar-thumb { background: #1C2541; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+        .transition-theme { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        
+        .glass-table th { background: rgba(28, 37, 65, 0.5); font-weight: 500; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; color: #9CA3AF; }
+        .glass-table tr { border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: background 0.2s; }
+        .glass-table tr:hover { background: rgba(28, 37, 65, 0.3); }
+    </style>
+    
+    <!-- Animation Libraries -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body class="font-sans antialiased h-screen flex overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-64 glass-panel flex-shrink-0 flex flex-col h-full transition-theme z-20 absolute lg:relative -translate-x-full lg:translate-x-0">
+        <!-- Logo -->
+        <div class="h-20 flex items-center px-6 border-b border-white/10">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-gold-500 flex items-center justify-center shadow-gold-glow">
+                    <i class="fa-solid fa-gem text-navy-900 text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-xl tracking-wide text-white">LUXE<span class="text-gold-500">ESTATES</span></h1>
+                    <p class="text-xs text-gray-400">Agent Portal</p>
+                </div>
+            </div>
+            <button id="closeSidebar" class="lg:hidden ml-auto text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 overflow-y-auto py-6 px-4 space-y-1">
+            <!-- Future MVC Route: /AgentDashboard/Index -->
+                        <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-theme">
+                <i class="fa-solid fa-chart-pie w-5 text-center"></i>
+                <span class="font-medium">Dashboard</span>
+            </a>
+            
+            <div class="pt-4 pb-2">
+                <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Properties</p>
+            </div>
+            <!-- Future MVC Route: /AgentDashboard/Listings -->
+                        <a href="listings.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-theme">
+                <i class="fa-solid fa-building w-5 text-center"></i>
+                <span class="font-medium">My Listings</span>
+            </a>
+            <!-- Future MVC Route: /AgentDashboard/AddProperty -->
+                        <a href="add-property.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-theme">
+                <i class="fa-solid fa-plus w-5 text-center"></i>
+                <span class="font-medium">Add Property</span>
+            </a>
+                <a href="edit-property.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-theme">
+                    <i class="fa-solid fa-pen-to-square w-5 text-center"></i>
+                    <span class="font-medium">Edit Property</span>
+                </a>
+            <!-- Future MVC Route: /AgentDashboard/PropertyImages -->
+                        <a href="property-images.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-theme">
+                <i class="fa-regular fa-images w-5 text-center"></i>
+                <span class="font-medium">Property Images</span>
+            </a>
+
+            <div class="pt-4 pb-2">
+                <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Client Management</p>
+            </div>
+            <!-- Future MVC Route: /AgentDashboard/Leads -->
+                        <a href="leads.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-navy-700/50 text-gold-500 border border-gold-500/20 shadow-inner transition-theme">
+                <i class="fa-solid fa-users w-5 text-center"></i>
+                <span class="font-medium">Leads Management</span>
+                <span class="ml-auto bg-gold-500 text-navy-900 py-0.5 px-2 rounded-full text-xs font-bold">12</span>
+            </a>
+
+            <div class="pt-4 pb-2">
+                <p class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Account</p>
+            </div>
+            <!-- Future MVC Route: /AgentDashboard/Packages -->
+                        <a href="packages.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-theme">
+                <i class="fa-solid fa-cube w-5 text-center"></i>
+                <span class="font-medium">Packages</span>
+            </a>
+            <!-- Future MVC Route: /AgentDashboard/Profile -->
+                        <a href="profile.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-theme">
+                <i class="fa-solid fa-user-tie w-5 text-center"></i>
+                <span class="font-medium">Profile Settings</span>
+            </a>
+            <!-- Future MVC Route: /AgentDashboard/Notifications -->
+                        <a href="notifications.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-theme">
+                <i class="fa-regular fa-bell w-5 text-center"></i>
+                <span class="font-medium">Notifications</span>
+            </a>
+        </nav>
+    
+        <!-- Sidebar Footer -->
+        <div class="p-4 border-t border-white/10">
+            <a href="logout.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-400 hover:bg-red-400/10 transition-theme">
+                <i class="fa-solid fa-arrow-right-from-bracket w-5 text-center"></i>
+                <span class="font-medium">Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-10 hidden lg:hidden"></div>
+
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 flex flex-col h-full min-w-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-fixed">
+        
+        <!-- Top Navbar -->
+        <header class="h-20 glass-panel flex items-center justify-between px-6 lg:px-10 z-10 sticky top-0 border-b border-white/10">
+            <div class="flex items-center gap-4">
+                <button id="openSidebar" class="lg:hidden text-gray-400 hover:text-white transition-theme p-2 rounded-lg hover:bg-white/5">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+                <div class="hidden sm:flex items-center glass-card px-4 py-2 rounded-full border border-white/10">
+                    <i class="fa-solid fa-search text-gray-400 mr-3"></i>
+                    <input type="text" placeholder="Search leads by name or email..." class="bg-transparent border-none outline-none text-sm text-white placeholder-gray-500 w-64 focus:w-80 transition-all duration-300">
+                </div>
+            </div>
+            <div class="flex items-center gap-4 sm:gap-6">
+                <button class="text-gray-400 hover:text-white relative p-2"><i class="fa-regular fa-bell text-xl"></i><span class="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-navy-900"></span></button>
+                <div class="w-px h-8 bg-white/10 hidden sm:block"></div>
+                <button class="flex items-center gap-3 text-left hover:opacity-80 transition-theme">
+                    <img src="https://i.pravatar.cc/150?img=11" alt="Alexander Pierce" class="w-10 h-10 rounded-full border-2 border-gold-500 object-cover">
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto p-6 lg:p-10">
+            
+            <!-- Page Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+                <div>
+                    <h2 class="text-3xl font-bold text-white">Leads Management</h2>
+                    <p class="text-gray-400 mt-2">Track client inquiries and manage potential buyers.</p>
+                </div>
+                <div class="flex gap-3">
+                    <button class="px-4 py-2 rounded-xl glass-card border border-white/10 text-white text-sm flex items-center gap-2 hover:bg-white/5 transition-theme">
+                        <i class="fa-solid fa-download text-gold-500"></i> Export CSV
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="glass-card rounded-xl p-5 border-l-4 border-blue-500">
+                    <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-1">Total Leads</p>
+                    <p class="text-3xl font-bold text-white">342</p>
+                </div>
+                <div class="glass-card rounded-xl p-5 border-l-4 border-gold-500 shadow-gold-glow">
+                    <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-1">New Inquiries</p>
+                    <p class="text-3xl font-bold text-white">12</p>
+                </div>
+                <div class="glass-card rounded-xl p-5 border-l-4 border-yellow-500">
+                    <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-1">Contacted / Active</p>
+                    <p class="text-3xl font-bold text-white">45</p>
+                </div>
+                <div class="glass-card rounded-xl p-5 border-l-4 border-green-500">
+                    <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-1">Closed Deals</p>
+                    <p class="text-3xl font-bold text-white">28</p>
+                </div>
+            </div>
+
+            <!-- Leads Filter -->
+            <div class="glass-card rounded-xl p-4 mb-6 flex flex-wrap gap-4 items-center">
+                <div class="text-sm font-medium text-gray-400">Filter By:</div>
+                <select class="bg-navy-800 border border-white/10 text-white text-sm rounded-lg p-2 outline-none w-32">
+                    <option>All Status</option>
+                    <option>New</option>
+                    <option>Contacted</option>
+                    <option>Negotiating</option>
+                    <option>Closed</option>
+                </select>
+                <select class="bg-navy-800 border border-white/10 text-white text-sm rounded-lg p-2 outline-none w-48">
+                    <option>All Properties</option>
+                    <option>Azure Sky Penthouse</option>
+                    <option>The Monarch Villa</option>
+                </select>
+                <input type="date" class="bg-navy-800 border border-white/10 text-gray-400 text-sm rounded-lg p-2 outline-none ml-auto">
+            </div>
+
+            <!-- Leads Table -->
+            <div class="glass-card rounded-2xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse glass-table min-w-[1000px]">
+                        <thead>
+                            <tr>
+                                <th class="p-4 pl-6">Client Details</th>
+                                <th class="p-4">Contact Info</th>
+                                <th class="p-4">Property Interest</th>
+                                <th class="p-4">Inquiry Date</th>
+                                <th class="p-4">Status</th>
+                                <th class="p-4 pr-6 text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <!-- Populated dynamically by app.js -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="p-4 border-t border-white/10 flex items-center justify-between text-sm text-gray-400">
+                    <div id="leadPagination">Showing 0 to 0 of 0 entries</div>
+                    <div class="flex gap-1">
+                        <button class="px-3 py-1 rounded bg-white/5 hover:bg-white/10 disabled:opacity-50 border border-white/10">Prev</button>
+                        <button class="px-3 py-1 rounded bg-gold-500 text-navy-900 font-medium">1</button>
+                        <button class="px-3 py-1 rounded bg-white/5 hover:bg-white/10 border border-white/10">2</button>
+                        <button class="px-3 py-1 rounded bg-white/5 hover:bg-white/10 border border-white/10">3</button>
+                        <span class="px-2 py-1">...</span>
+                        <button class="px-3 py-1 rounded bg-white/5 hover:bg-white/10 border border-white/10">Next</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const openSidebarBtn = document.getElementById('openSidebar');
+        const closeSidebarBtn = document.getElementById('closeSidebar');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+        }
+
+        openSidebarBtn.addEventListener('click', toggleSidebar);
+        closeSidebarBtn.addEventListener('click', toggleSidebar);
+        sidebarOverlay.addEventListener('click', toggleSidebar);
+    </script>
+    <!-- App Logic -->
+    <script src="js/app.js"></script>
+    <script src="js/leads.js"></script>
+</body>
+</html>

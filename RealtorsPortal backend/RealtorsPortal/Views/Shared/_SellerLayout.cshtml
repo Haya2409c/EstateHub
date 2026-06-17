@@ -1,0 +1,136 @@
+@using RealtorsPortal.Models.Entities
+@inject Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> UserManager
+@{
+    var currentUser = await UserManager.GetUserAsync(User);
+    var userName = currentUser?.FullName ?? User.Identity?.Name ?? "Seller";
+    var nameParts = userName.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+    var initials = nameParts.Length >= 2
+        ? $"{nameParts[0][0]}{nameParts[1][0]}".ToUpper()
+        : (userName.Length >= 2 ? userName.Substring(0, 2).ToUpper() : userName.ToUpper());
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString() ?? "";
+    Func<string, string> NavCls = action => currentAction == action ? "nav-item active" : "nav-item";
+    var pageHeading = ViewData["PageHeading"]?.ToString() ?? "Dashboard";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] | Estate Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/seller-dashboard.css">
+</head>
+<body class="bg-[#F8F7F4] text-[#1a1a2e]">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <!-- Logo -->
+        <div class="sidebar-logo">
+            <div style="width:36px;height:36px;background:linear-gradient(135deg,#2563EB,#1E3A5F);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <i class="fas fa-building" style="color:#FFFFFF;font-size:1rem;"></i>
+            </div>
+            <div>
+                <div class="sidebar-logo-text">Estate Hub</div>
+                <div class="sidebar-logo-sub">Seller Dashboard</div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="sidebar-nav">
+
+            <div class="nav-section-label">Main</div>
+            <a asp-controller="Seller" asp-action="Index" class="@NavCls("Index")">
+                <i class="fas fa-gauge-high"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <div class="nav-section-label">Properties</div>
+            <a asp-controller="Seller" asp-action="MyListings" class="@NavCls("MyListings")">
+                <i class="fas fa-house"></i>
+                <span>My Properties</span>
+            </a>
+            <div class="nav-sub">
+                <a asp-controller="Seller" asp-action="CreateListing" class="@NavCls("CreateListing")">
+                    <i class="fas fa-plus"></i>
+                    <span>Add Property</span>
+                </a>
+            </div>
+
+            <div class="nav-section-label">Media</div>
+            <a asp-controller="Seller" asp-action="UploadImages" class="@NavCls("UploadImages")">
+                <i class="fas fa-images"></i>
+                <span>Property Images</span>
+            </a>
+
+            <div class="nav-section-label">Account</div>
+            <a asp-controller="Seller" asp-action="Subscription" class="@NavCls("Subscription")">
+                <i class="fas fa-credit-card"></i>
+                <span>Packages</span>
+            </a>
+            <a asp-controller="Seller" asp-action="Profile" class="@NavCls("Profile")">
+                <i class="fas fa-user-gear"></i>
+                <span>Profile Settings</span>
+            </a>
+
+        </nav>
+
+        <!-- Sidebar User + Logout -->
+        <div class="sidebar-bottom">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar">@initials</div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name">@userName</div>
+                    <div class="sidebar-user-role">Seller Account</div>
+                </div>
+            </div>
+            <form asp-controller="Account" asp-action="Logout" method="post" style="width:100%;">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="nav-item nav-item-logout" style="width:100%;background:transparent;border:none;cursor:pointer;text-align:left;">
+                    <i class="fas fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </button>
+            </form>
+        </div>
+
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content-wrapper min-h-screen flex flex-col">
+
+        <!-- Header -->
+        <header class="h-[70px] bg-white border-b border-[#1E3A5F]/15 flex items-center justify-between px-6 sticky top-0 z-30">
+            <div class="flex items-center">
+                <button id="mobileMenuBtn" class="lg:hidden text-[#1E3A5F] text-xl mr-4 focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <h1 class="font-outfit font-semibold text-[#1E3A5F] text-xl">@pageHeading</h1>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="text-[#1E3A5F] relative hover:text-[#2563EB] transition-colors">
+                    <i class="fa-regular fa-bell text-xl"></i>
+                    <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
+                </button>
+                <div class="flex items-center gap-3 border-l pl-6 border-[#1E3A5F]/15">
+                    <img src="https://ui-avatars.com/api/?name=@Uri.EscapeDataString(userName)&background=1E3A5F&color=fff" alt="Avatar" id="headerAvatar" class="w-10 h-10 rounded-full border-2 border-white shadow-sm">
+                    <div class="hidden sm:block">
+                        <div class="font-outfit font-semibold text-[#1E3A5F] text-sm leading-tight">@userName</div>
+                        <div class="font-poppins text-xs text-gray-500">Seller Account</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        @RenderBody()
+
+    </div>
+
+    <div id="toastContainer"></div>
+    <script src="~/js/seller-dashboard.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

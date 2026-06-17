@@ -1,0 +1,257 @@
+@model RealtorsPortal.Models.ViewModels.Properties.PropertyListViewModel
+@{
+    ViewData["Title"] = "All Properties";
+    var filter = Model.Filter;
+    var pagination = Model.Pagination;
+    var selectedCity = ViewBag.SelectedCity as string ?? "all";
+    var selectedStatus = ViewBag.SelectedStatus as string ?? "all";
+}
+
+<!-- Page Header -->
+<section class="pt-32 pb-20 bg-deep border-b border-gray-200 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[#1E3A5F]/70"></div>
+    <div class="container mx-auto px-6 text-center relative z-10">
+        <span class="text-gold uppercase tracking-[0.3em] text-sm font-semibold mb-4 block">Elite Collection</span>
+        <h1 class="text-white text-5xl md:text-6xl font-bold mb-6">Explore Luxury <span class="text-gold italic font-normal">Properties</span></h1>
+        <p class="max-w-2xl mx-auto text-white/85">Discover premium properties across Pakistan.</p>
+    </div>
+</section>
+
+<!-- Properties Grid & Sidebar -->
+<section class="py-20 px-4 md:px-12 w-full">
+    <form method="get" asp-controller="Properties" asp-action="Index" id="filterForm">
+        <div class="flex flex-col lg:flex-row items-start gap-8 xl:gap-12">
+            <!-- Mobile Filter Button -->
+            <button type="button" class="md:hidden btn-gold mb-6 w-full" id="mobile-filter-toggle">
+                <i class="fas fa-sliders-h mr-2"></i> Show Filters
+            </button>
+
+            <!-- Sidebar Filters -->
+            <aside class="w-full lg:w-72 flex-shrink-0 lg:sticky lg:top-24 relative">
+                <div class="glass-panel p-6 rounded-3xl filter-sidebar" data-aos="fade-right">
+                    <div class="flex justify-between items-center mb-8 border-b border-gray-200 pb-4">
+                        <h3 class="text-xl font-bold">Advanced Filters</h3>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="filter-keyword" class="block text-sm text-[#4a5568] mb-2 uppercase tracking-widest font-bold">Keyword</label>
+                        <input type="text" id="filter-keyword" name="keyword" value="@filter.Keyword" placeholder="e.g. Pool, Sea View"
+                               class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-navy focus:ring-1 focus:ring-gold outline-none text-gray-800 placeholder-gray-500 transition-all">
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="filter-type" class="block text-sm text-[#4a5568] mb-2 uppercase tracking-widest font-bold">Property Type</label>
+                        <select id="filter-type" name="type" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-navy focus:ring-1 focus:ring-gold outline-none transition-all appearance-none cursor-pointer text-[#4a5568]">
+                            <option value="all" selected="@(filter.PropertyType == null || filter.PropertyType == "all")">All Types</option>
+                            <option value="house" selected="@(filter.PropertyType == "house")">House</option>
+                            <option value="apartment" selected="@(filter.PropertyType == "apartment")">Apartment</option>
+                            <option value="plot" selected="@(filter.PropertyType == "plot")">Plot</option>
+                            <option value="commercial" selected="@(filter.PropertyType == "commercial")">Commercial</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="filter-city" class="block text-sm text-[#4a5568] mb-2 uppercase tracking-widest font-bold">City</label>
+                        <select id="filter-city" name="city" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-navy focus:ring-1 focus:ring-gold outline-none transition-all appearance-none cursor-pointer text-[#4a5568]">
+                            <option value="all" selected="@(selectedCity == "all")">All Cities</option>
+                            <option value="karachi" selected="@(selectedCity == "karachi")">Karachi</option>
+                            <option value="lahore" selected="@(selectedCity == "lahore")">Lahore</option>
+                            <option value="islamabad" selected="@(selectedCity == "islamabad")">Islamabad</option>
+                            <option value="peshawar" selected="@(selectedCity == "peshawar")">Peshawar</option>
+                            <option value="quetta" selected="@(selectedCity == "quetta")">Quetta</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="filter-status" class="block text-sm text-[#4a5568] mb-2 uppercase tracking-widest font-bold">Status</label>
+                        <select id="filter-status" name="status" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-navy focus:ring-1 focus:ring-gold outline-none transition-all appearance-none cursor-pointer text-[#4a5568]">
+                            <option value="all" selected="@(selectedStatus == "all")">Any Status</option>
+                            <option value="buy" selected="@(selectedStatus == "buy")">Buy</option>
+                            <option value="rent" selected="@(selectedStatus == "rent")">Rent</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-sm text-[#4a5568] mb-3 uppercase tracking-widest font-bold">Price Range</label>
+                        <input type="number" name="minprice" value="@filter.MinPrice" placeholder="Min Price e.g. 100000"
+                               class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-navy focus:ring-1 focus:ring-gold outline-none text-gray-800 placeholder-gray-500 transition-all mb-3">
+                        <input type="number" name="maxprice" value="@filter.MaxPrice" placeholder="Max Price e.g. 5000000"
+                               class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-navy focus:ring-1 focus:ring-gold outline-none text-gray-800 placeholder-gray-500 transition-all">
+                    </div>
+
+                    <div class="mb-6 flex gap-4">
+                        <div class="flex-1">
+                            <label for="filter-beds" class="block text-sm text-[#4a5568] mb-2 uppercase tracking-widest font-bold">Beds</label>
+                            <select id="filter-beds" name="beds" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-navy focus:ring-1 focus:ring-gold outline-none transition-all appearance-none cursor-pointer text-[#4a5568]">
+                                <option value="">Any</option>
+                                @foreach (var n in new[]{1,2,3,4,5})
+                                {
+                                    <option value="@n" selected="@(filter.MinBedrooms == n)">@n+</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="flex-1">
+                            <label for="filter-baths" class="block text-sm text-[#4a5568] mb-2 uppercase tracking-widest font-bold">Baths</label>
+                            <select id="filter-baths" name="baths" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-navy focus:ring-1 focus:ring-gold outline-none transition-all appearance-none cursor-pointer text-[#4a5568]">
+                                <option value="">Any</option>
+                                @foreach (var n in new[]{1,2,3,4,5})
+                                {
+                                    <option value="@n" selected="@(filter.MinBathrooms == n)">@n+</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-3">
+                        <button type="submit" class="w-full btn-gold !py-3 font-semibold text-sm tracking-wide">Apply Filters</button>
+                        <a href="@Url.Action("Index", "Properties")" class="w-full py-3 rounded-xl border border-gray-300 text-[#1E3A5F] text-sm font-semibold hover:border-gold hover:text-gold transition-all text-center">Reset Filters</a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Properties Grid -->
+            <div class="flex-1 w-full">
+                <!-- Top Bar -->
+                <div class="flex flex-col sm:flex-row justify-between items-center mb-8 bg-white border border-gray-200 rounded-2xl p-4 glass-panel">
+                    <p class="text-sm text-[#4a5568] font-medium mb-4 sm:mb-0">
+                        Showing <span class="text-white font-bold">@Model.Properties.Count</span> of
+                        <span class="text-gold font-bold">@pagination.TotalItems</span> Properties
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs text-gray-500 uppercase tracking-wider font-bold hidden sm:block">Sort By:</span>
+                        <div class="relative">
+                            <label for="sort-select" class="sr-only">Sort By</label>
+                            <select id="sort-select" name="sort" onchange="document.getElementById('filterForm').submit()"
+                                    class="bg-white border border-gray-200 rounded-xl px-4 py-2 pr-8 text-sm outline-none focus:border-navy appearance-none cursor-pointer text-gray-800">
+                                <option value="newest" selected="@(filter.SortBy == null || filter.SortBy == "newest")">Newest Listings</option>
+                                <option value="price_asc" selected="@(filter.SortBy == "price_asc")">Price: Low to High</option>
+                                <option value="price_desc" selected="@(filter.SortBy == "price_desc")">Price: High to Low</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                                <i class="fas fa-chevron-down text-[10px]"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if (!Model.Properties.Any())
+                {
+                    <div class="flex flex-col items-center justify-center py-20 text-center">
+                        <p class="text-3xl text-gold mb-3">No Properties Found</p>
+                        <p class="text-[#4a5568] text-lg">Try adjusting or resetting your filters</p>
+                        <a href="@Url.Action("Index", "Properties")" class="mt-6 btn-gold px-8 py-3 rounded-full">Reset Filters</a>
+                    </div>
+                }
+                else
+                {
+                    <!-- Properties Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 items-stretch">
+                        @foreach (var prop in Model.Properties)
+                        {
+                            var statusLabel = prop.Status switch { "buy" => "For Buy", "rent" => "For Rent", "sell" => "For Sale", _ => "Listed" };
+                            var statusColor = prop.Status switch { "buy" => "bg-blue-500", "rent" => "bg-green-500", _ => "bg-gold" };
+                            var price = prop.Price.ToString("N0");
+                            <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow flex flex-col" data-aos="fade-up">
+                                <a asp-controller="Properties" asp-action="Details" asp-route-id="@prop.Id" class="block relative overflow-hidden h-52 flex-shrink-0">
+                                    <img src="@prop.ThumbnailUrl" alt="@prop.Title"
+                                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                         onerror="this.src='/assets/images/new-property-1.jpg'">
+                                    <span class="absolute top-3 left-3 @statusColor text-white text-xs font-bold px-3 py-1 rounded-full">@statusLabel</span>
+                                    @if (prop.PropertyType != null)
+                                    {
+                                        <span class="absolute top-3 right-3 bg-white/90 text-[#1E3A5F] text-xs font-semibold px-3 py-1 rounded-full">@prop.PropertyType</span>
+                                    }
+                                </a>
+                                <div class="p-5 flex flex-col flex-1">
+                                    <p class="text-2xl font-bold text-gold mb-1">PKR @price</p>
+                                    <h3 class="font-outfit font-bold text-[#1E3A5F] text-base mb-2 line-clamp-2">@prop.Title</h3>
+                                    <p class="text-xs text-gray-500 mb-4 flex items-center gap-1">
+                                        <i class="fas fa-map-marker-alt text-gold"></i> @prop.Address
+                                    </p>
+                                    <div class="flex items-center gap-4 text-xs text-gray-500 border-t border-gray-100 pt-3 mt-auto">
+                                        @if (prop.Bedrooms.HasValue)
+                                        {
+                                            <span><i class="fas fa-bed mr-1 text-[#2563EB]"></i> @prop.Bedrooms Beds</span>
+                                        }
+                                        @if (prop.Bathrooms.HasValue)
+                                        {
+                                            <span><i class="fas fa-bath mr-1 text-[#2563EB]"></i> @prop.Bathrooms Baths</span>
+                                        }
+                                        @if (prop.AreaSqft.HasValue)
+                                        {
+                                            <span><i class="fas fa-ruler-combined mr-1 text-[#2563EB]"></i> @prop.AreaSqft sqft</span>
+                                        }
+                                        <a asp-controller="Properties" asp-action="Details" asp-route-id="@prop.Id"
+                                           class="ml-auto text-[#2563EB] hover:text-gold font-semibold transition-colors text-xs">View →</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <!-- Pagination -->
+                    @if (pagination.TotalPages > 1)
+                    {
+                        <div class="flex justify-center items-center gap-2 mt-12">
+                            @if (pagination.HasPreviousPage)
+                            {
+                                <a asp-action="Index" asp-route-page="@pagination.PreviousPage"
+                                   asp-route-keyword="@filter.Keyword" asp-route-type="@filter.PropertyType"
+                                   asp-route-city="@selectedCity" asp-route-status="@selectedStatus"
+                                   asp-route-minprice="@filter.MinPrice" asp-route-maxprice="@filter.MaxPrice"
+                                   asp-route-beds="@filter.MinBedrooms" asp-route-baths="@filter.MinBathrooms"
+                                   asp-route-sort="@filter.SortBy"
+                                   class="px-4 py-2 rounded-xl border border-gray-200 text-sm hover:bg-[#1E3A5F] hover:text-white transition-colors">
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                            }
+                            @for (int i = Math.Max(1, pagination.CurrentPage - 2); i <= Math.Min(pagination.TotalPages, pagination.CurrentPage + 2); i++)
+                            {
+                                <a asp-action="Index" asp-route-page="@i"
+                                   asp-route-keyword="@filter.Keyword" asp-route-type="@filter.PropertyType"
+                                   asp-route-city="@selectedCity" asp-route-status="@selectedStatus"
+                                   asp-route-minprice="@filter.MinPrice" asp-route-maxprice="@filter.MaxPrice"
+                                   asp-route-beds="@filter.MinBedrooms" asp-route-baths="@filter.MinBathrooms"
+                                   asp-route-sort="@filter.SortBy"
+                                   class="px-4 py-2 rounded-xl border text-sm transition-colors @(i == pagination.CurrentPage ? "bg-[#1E3A5F] text-white border-[#1E3A5F]" : "border-gray-200 hover:bg-[#1E3A5F] hover:text-white")">
+                                    @i
+                                </a>
+                            }
+                            @if (pagination.HasNextPage)
+                            {
+                                <a asp-action="Index" asp-route-page="@pagination.NextPage"
+                                   asp-route-keyword="@filter.Keyword" asp-route-type="@filter.PropertyType"
+                                   asp-route-city="@selectedCity" asp-route-status="@selectedStatus"
+                                   asp-route-minprice="@filter.MinPrice" asp-route-maxprice="@filter.MaxPrice"
+                                   asp-route-beds="@filter.MinBedrooms" asp-route-baths="@filter.MinBathrooms"
+                                   asp-route-sort="@filter.SortBy"
+                                   class="px-4 py-2 rounded-xl border border-gray-200 text-sm hover:bg-[#1E3A5F] hover:text-white transition-colors">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            }
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterToggleBtn = document.getElementById('mobile-filter-toggle');
+        const filterSidebar = document.querySelector('.filter-sidebar');
+        if (filterToggleBtn && filterSidebar) {
+            filterToggleBtn.addEventListener('click', function() {
+                const aside = filterSidebar.closest('aside');
+                aside.style.display = (aside.style.display === 'none' || aside.classList.contains('hidden')) ? 'block' : 'none';
+            });
+            if (window.innerWidth < 1024) {
+                filterSidebar.closest('aside').style.display = 'none';
+            }
+        }
+        if (typeof AOS !== 'undefined') AOS.init({ duration: 600, once: true });
+    });
+</script>
+}

@@ -1,0 +1,224 @@
+@model RealtorsPortal.Models.ViewModels.CreateListingViewModel
+@{
+    Layout = "_SellerLayout";
+    ViewData["Title"] = "Add New Property";
+    ViewData["PageHeading"] = "Add New Property";
+}
+
+<main class="flex-1 p-6 max-w-4xl mx-auto w-full pb-24 lg:pb-12">
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="mb-4 p-3 bg-green-100 text-green-700 rounded-lg font-poppins text-sm">@TempData["Success"]</div>
+    }
+
+    <form id="addPropertyForm" asp-controller="Seller" asp-action="CreateListing" method="post" enctype="multipart/form-data" class="space-y-6">
+    @Html.AntiForgeryToken()
+
+        <!-- Section 1: Basic Information -->
+        <div class="glass-panel p-6 sm:p-8 mb-6">
+            <h2 class="section-heading">Basic Information</h2>
+            <div class="space-y-4">
+                <div>
+                    <label>Property Title <span class="required">*</span></label>
+                    <input type="text" name="Title" placeholder="e.g. Luxury Villa in DHA Phase 5" required>
+                </div>
+                <div>
+                    <label>Description <span class="required">*</span></label>
+                    <textarea name="Description" rows="5" placeholder="Describe the key features of the property..." required></textarea>
+                </div>
+                <div>
+                    <label>Property Type <span class="required">*</span></label>
+                    <select name="PropertyType" required>
+                        <option value="" disabled selected>Select property type</option>
+                        <option value="house">House</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="plot">Plot</option>
+                        <option value="commercial">Commercial Space</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Property Status -->
+        <div class="glass-panel p-6 sm:p-8 mb-6">
+            <h2 class="section-heading">Property Status</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <label class="cursor-pointer">
+                    <input type="radio" name="Status" value="buy" class="peer hidden" checked>
+                    <div class="border-2 border-transparent peer-checked:border-[#1E3A5F] peer-checked:bg-[#1E3A5F]/5 rounded-xl p-4 text-center transition-all bg-white shadow-sm hover:shadow-md">
+                        <i class="fa-solid fa-tag text-2xl text-[#2563EB] mb-2"></i>
+                        <div class="font-outfit font-semibold text-[#1E3A5F]">Buy</div>
+                    </div>
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" name="Status" value="rent" class="peer hidden">
+                    <div class="border-2 border-transparent peer-checked:border-[#1E3A5F] peer-checked:bg-[#1E3A5F]/5 rounded-xl p-4 text-center transition-all bg-white shadow-sm hover:shadow-md">
+                        <i class="fa-solid fa-key text-2xl text-[#2563EB] mb-2"></i>
+                        <div class="font-outfit font-semibold text-[#1E3A5F]">Rent</div>
+                    </div>
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" name="Status" value="sell" class="peer hidden">
+                    <div class="border-2 border-transparent peer-checked:border-[#1E3A5F] peer-checked:bg-[#1E3A5F]/5 rounded-xl p-4 text-center transition-all bg-white shadow-sm hover:shadow-md">
+                        <i class="fa-solid fa-briefcase text-2xl text-[#2563EB] mb-2"></i>
+                        <div class="font-outfit font-semibold text-[#1E3A5F]">Sell</div>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <!-- Section 3: Location -->
+        <div class="glass-panel p-6 sm:p-8 mb-6">
+            <h2 class="section-heading">Location</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label>Country <span class="required">*</span></label>
+                    <select name="Country" required>
+                        <option value="pk">Pakistan</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Region <span class="required">*</span></label>
+                    <select name="Region" required>
+                        <option value="" disabled selected>Select Region</option>
+                        <option value="sindh">Sindh</option>
+                        <option value="punjab">Punjab</option>
+                        <option value="kpk">KPK</option>
+                        <option value="balochistan">Balochistan</option>
+                    </select>
+                </div>
+                <div>
+                    <label>City <span class="required">*</span></label>
+                    <select name="City" required>
+                        <option value="" disabled selected>Select City</option>
+                        <option value="karachi">Karachi</option>
+                        <option value="lahore">Lahore</option>
+                        <option value="islamabad">Islamabad</option>
+                        <option value="peshawar">Peshawar</option>
+                        <option value="quetta">Quetta</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Area <span class="required">*</span></label>
+                    <input type="text" name="Area" placeholder="e.g. DHA Phase 5" required>
+                </div>
+            </div>
+            <div>
+                <label>Full Address <span class="required">*</span></label>
+                <input type="text" name="Address" placeholder="House/Flat number, Street etc." required>
+            </div>
+        </div>
+
+        <!-- Section 4: Property Details -->
+        <div class="glass-panel p-6 sm:p-8 mb-6">
+            <h2 class="section-heading">Property Details</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                    <label>Price (PKR) <span class="required">*</span></label>
+                    <input type="number" name="Price" placeholder="e.g. 50000000" required>
+                </div>
+                <div>
+                    <label>Bedrooms</label>
+                    <input type="number" name="Bedrooms" placeholder="e.g. 4">
+                </div>
+                <div>
+                    <label>Bathrooms</label>
+                    <input type="number" name="Bathrooms" placeholder="e.g. 4">
+                </div>
+                <div>
+                    <label>Area (sqft) <span class="required">*</span></label>
+                    <input type="number" name="AreaSqft" placeholder="e.g. 1000" required>
+                </div>
+                <div>
+                    <label>Parking Spots</label>
+                    <input type="number" name="ParkingSpots" placeholder="e.g. 2">
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Amenities -->
+        <div class="glass-panel p-6 sm:p-8 mb-6">
+            <h2 class="section-heading">Amenities</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" name="Amenities" value="wifi" class="custom-checkbox" @(Model.Amenities.Contains("wifi") ? "checked" : "")>
+                    <span class="font-poppins text-sm text-[#1E3A5F] group-hover:text-[#2563EB] transition-colors">WiFi</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" name="Amenities" value="gym" class="custom-checkbox">
+                    <span class="font-poppins text-sm text-[#1E3A5F] group-hover:text-[#2563EB] transition-colors">Gym</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" name="Amenities" value="pool" class="custom-checkbox">
+                    <span class="font-poppins text-sm text-[#1E3A5F] group-hover:text-[#2563EB] transition-colors">Swimming Pool</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" name="Amenities" value="security" class="custom-checkbox">
+                    <span class="font-poppins text-sm text-[#1E3A5F] group-hover:text-[#2563EB] transition-colors">Security</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" name="Amenities" value="elevator" class="custom-checkbox">
+                    <span class="font-poppins text-sm text-[#1E3A5F] group-hover:text-[#2563EB] transition-colors">Elevator</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" name="Amenities" value="garden" class="custom-checkbox">
+                    <span class="font-poppins text-sm text-[#1E3A5F] group-hover:text-[#2563EB] transition-colors">Garden</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Section 6: Upload Images -->
+        <div class="glass-panel p-6 sm:p-8 mb-8">
+            <h2 class="section-heading">Upload Images</h2>
+            <div class="border-2 border-dashed border-[#1E3A5F]/30 hover:border-[#1E3A5F] bg-white rounded-2xl p-8 text-center transition-colors cursor-pointer" onclick="document.getElementById('fileInput').click()">
+                <div class="w-16 h-16 bg-[#F4F6F9] rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-cloud-arrow-up text-2xl text-[#2563EB]"></i>
+                </div>
+                <h3 class="font-outfit font-semibold text-[#1E3A5F] mb-1">Drag & drop images here</h3>
+                <p class="font-poppins text-sm text-[#718096] mb-4">or click to Browse Files</p>
+                <div class="text-xs text-[#718096]">Supports: JPG, PNG, WEBP (max 5MB each)</div>
+                <input type="file" id="fileInput" name="Images" class="hidden" multiple accept="image/*">
+            </div>
+            <div class="flex gap-4 mt-6 overflow-x-auto pb-2" id="thumbnailContainer"></div>
+        </div>
+
+        <!-- Submit Section -->
+        <div class="fixed bottom-0 left-0 right-0 lg:static bg-white/95 backdrop-blur-md lg:bg-transparent p-4 lg:p-0 border-t lg:border-none border-white/20 z-20 flex justify-end gap-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] lg:shadow-none">
+            <a asp-controller="Seller" asp-action="MyListings" class="btn-outline-navy w-1/2 lg:w-auto">Cancel</a>
+            <button type="submit" class="btn-gold w-1/2 lg:w-auto">Publish Property <i class="fa-solid fa-arrow-right ml-1"></i></button>
+        </div>
+
+    </form>
+
+</main>
+
+@section Scripts {
+<script>
+    // Remove JS form intercept — form now submits to real POST endpoint
+    document.getElementById('fileInput').addEventListener('change', function(e) {
+        const container = document.getElementById('thumbnailContainer');
+        if (this.files && this.files.length > 0) {
+            Array.from(this.files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const div = document.createElement('div');
+                    div.className = 'w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden relative group';
+                    div.innerHTML = `
+                        <img src="${e.target.result}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity cursor-pointer">
+                            <i class="fa-solid fa-trash text-white"></i>
+                        </div>
+                    `;
+                    div.querySelector('.fa-trash').addEventListener('click', (ev) => {
+                        ev.stopPropagation();
+                        div.remove();
+                    });
+                    container.appendChild(div);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+    });
+</script>
+}

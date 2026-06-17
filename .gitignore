@@ -1,0 +1,27 @@
+# ASP.NET Core
+RealtorsPortal backend/RealtorsPortal/bin/
+RealtorsPortal backend/RealtorsPortal/obj/
+RealtorsPortal backend/RealtorsPortal/appsettings.json
+
+# Keep the example config (no real credentials)
+!RealtorsPortal backend/RealtorsPortal/appsettings.example.json
+
+# User secrets
+*.user
+
+# Uploads (user-generated files, large)
+RealtorsPortal backend/RealtorsPortal/wwwroot/uploads/
+
+# Logs
+*.log
+logs/
+
+# VS / Rider
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+
+# Node (if any)
+node_modules/

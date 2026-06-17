@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout - LuxeEstates Agent Portal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        navy: {
+                            900: '#060B19',
+                            800: '#0B132B',
+                            700: '#1C2541',
+                            600: '#3A506B',
+                        },
+                        gold: {
+                            400: '#F1C40F',
+                            500: '#D4AF37',
+                            600: '#AA8C2C',
+                        }
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 30px -10px rgba(0,0,0,0.5)',
+                        'gold-glow': '0 0 15px rgba(212,175,55,0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #060B19; }
+        .glass-card {
+            background: rgba(11, 19, 43, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        .transition-theme { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex items-center justify-center p-4">
+
+    <!-- Background decoration -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-red-500/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- Logout Card -->
+    <div class="glass-card rounded-2xl p-8 md:p-10 w-full max-w-md text-center relative z-10">
+
+        <!-- Logo -->
+        <div class="flex items-center justify-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-gold-500 flex items-center justify-center shadow-gold-glow">
+                <i class="fa-solid fa-gem text-navy-900 text-xl"></i>
+            </div>
+            <div class="text-left">
+                <h1 class="font-bold text-xl tracking-wide text-white">LUXE<span class="text-gold-500">ESTATES</span></h1>
+                <p class="text-xs text-gray-400">Agent Portal</p>
+            </div>
+        </div>
+
+        <!-- Icon -->
+        <div class="w-20 h-20 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-arrow-right-from-bracket text-3xl text-red-400"></i>
+        </div>
+
+        <h2 class="text-2xl font-bold text-white mb-3">Logout Confirmation</h2>
+        <p class="text-gray-400 mb-8 leading-relaxed">Kya aap waqai logout karna chahte hain?<br>Aapko dobara login karna parega.</p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+            <a href="index.html"
+               class="flex-1 py-3 px-6 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-theme font-medium text-sm text-center">
+                Cancel
+            </a>
+            <button onclick="doLogout()"
+                    class="flex-1 py-3 px-6 rounded-xl bg-red-500 hover:bg-red-600 text-white transition-theme font-bold text-sm shadow-lg">
+                Yes, Logout
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function doLogout() {
+            // Clear all local session data
+            localStorage.clear();
+            sessionStorage.clear();
+            // Redirect to home page
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>

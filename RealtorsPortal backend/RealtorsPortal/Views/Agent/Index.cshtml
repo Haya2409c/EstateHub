@@ -1,0 +1,158 @@
+@using RealtorsPortal.Models.Entities
+@inject Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> UserManager
+@{
+    Layout = "_AgentLayout";
+    ViewData["Title"] = "Dashboard";
+    ViewData["PageHeading"] = "Dashboard";
+    var totalProps    = (int)(ViewBag.TotalProperties ?? 0);
+    var activeList    = (int)(ViewBag.ActiveListings ?? 0);
+    var totalLeads    = (int)(ViewBag.TotalLeads ?? 0);
+    var unreadLeads   = (int)(ViewBag.UnreadLeads ?? 0);
+    var recentProps   = ViewBag.RecentProperties as List<Property> ?? new();
+    var recentLeads   = ViewBag.RecentLeads as List<PropertyEnquiry> ?? new();
+    var currentUser   = await UserManager.GetUserAsync(User);
+    var agentName     = currentUser?.FullName?.Split(' ')[0] ?? "Agent";
+}
+
+<main class="p-6 lg:p-8 space-y-8">
+
+    <!-- Welcome -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4" data-aos="fade-down">
+        <div>
+            <p class="text-gold-500 text-sm font-medium tracking-wider mb-1 uppercase">Overview</p>
+            <h2 class="text-3xl font-bold text-white">Welcome back, @agentName!</h2>
+            <p class="text-gray-400 mt-1 text-sm">Here's what's happening with your portfolio today.</p>
+        </div>
+        <div class="text-sm text-gray-400 glass-card px-4 py-2 rounded-xl flex items-center gap-2">
+            <i class="fa-regular fa-calendar text-gold-500"></i>
+            <span>@DateTime.Now.ToString("MMMM dd, yyyy")</span>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="glass-card rounded-2xl p-6 relative overflow-hidden group hover:-translate-y-1 transition-theme" data-aos="fade-up" data-aos-delay="0">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-theme">
+                <i class="fa-solid fa-building text-5xl text-gold-500"></i>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center mb-4 border border-blue-500/30">
+                <i class="fa-solid fa-house-chimney text-xl"></i>
+            </div>
+            <p class="text-gray-400 text-sm mb-1">Total Listings</p>
+            <p class="text-3xl font-bold text-white">@totalProps</p>
+        </div>
+        <div class="glass-card rounded-2xl p-6 relative overflow-hidden group hover:-translate-y-1 transition-theme" data-aos="fade-up" data-aos-delay="50">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-theme">
+                <i class="fa-solid fa-chart-line text-5xl text-gold-500"></i>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center mb-4 border border-green-500/30">
+                <i class="fa-solid fa-check-circle text-xl"></i>
+            </div>
+            <p class="text-gray-400 text-sm mb-1">Active Listings</p>
+            <p class="text-3xl font-bold text-white">@activeList</p>
+        </div>
+        <div class="glass-card rounded-2xl p-6 relative overflow-hidden group hover:-translate-y-1 transition-theme" data-aos="fade-up" data-aos-delay="100">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-theme">
+                <i class="fa-solid fa-users text-5xl text-gold-500"></i>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center mb-4 border border-purple-500/30">
+                <i class="fa-solid fa-user-plus text-xl"></i>
+            </div>
+            <p class="text-gray-400 text-sm mb-1">Total Leads</p>
+            <p class="text-3xl font-bold text-white">@totalLeads</p>
+        </div>
+        <div class="glass-card rounded-2xl p-6 relative overflow-hidden group hover:-translate-y-1 transition-theme" data-aos="fade-up" data-aos-delay="150">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-theme">
+                <i class="fa-solid fa-bell text-5xl text-gold-500"></i>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-gold-500/20 text-gold-500 flex items-center justify-center mb-4 border border-gold-500/30 shadow-gold-glow">
+                <i class="fa-solid fa-envelope-open text-xl"></i>
+            </div>
+            <p class="text-gray-400 text-sm mb-1">Unread Leads</p>
+            <p class="text-3xl font-bold text-white">@unreadLeads</p>
+        </div>
+    </div>
+
+    <!-- Two column: Recent Properties + Recent Leads -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        <!-- Recent Properties -->
+        <div class="glass-card rounded-2xl p-6" data-aos="fade-right">
+            <div class="flex items-center justify-between mb-5">
+                <h3 class="font-semibold text-white text-lg">Recent Listings</h3>
+                <a asp-controller="Agent" asp-action="MyListings" class="text-xs text-gold-500 hover:text-gold-400 transition-theme">View All →</a>
+            </div>
+            @if (!recentProps.Any())
+            {
+                <div class="text-center py-8 text-gray-500">
+                    <i class="fa-solid fa-house-chimney text-4xl mb-3 block opacity-30"></i>
+                    <p class="text-sm">No listings yet</p>
+                    <a asp-controller="Agent" asp-action="CreateListing" class="mt-3 inline-block text-xs text-gold-500 hover:underline">Add your first listing →</a>
+                </div>
+            }
+            else
+            {
+                <div class="space-y-3">
+                    @foreach (var p in recentProps)
+                    {
+                        var thumb = p.Images.FirstOrDefault(i => i.IsPrimary)?.Url
+                            ?? p.Images.OrderBy(i => i.SortOrder).FirstOrDefault()?.Url
+                            ?? "/assets/images/new-property-1.jpg";
+                        var statusColor = p.Status switch { "buy" => "bg-blue-500/20 text-blue-400", "rent" => "bg-green-500/20 text-green-400", _ => "bg-gold-500/20 text-gold-500" };
+                        <div class="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-theme">
+                            <img src="@thumb" class="w-12 h-12 rounded-lg object-cover flex-shrink-0" onerror="this.src='/assets/images/new-property-1.jpg'">
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-medium text-white truncate">@p.Title</p>
+                                <p class="text-xs text-gray-400 truncate">@p.Address</p>
+                            </div>
+                            <div class="text-right flex-shrink-0">
+                                <span class="text-xs font-bold text-gold-500">PKR @p.Price.ToString("N0")</span>
+                                <span class="block mt-1 px-2 py-0.5 rounded-full text-xs @statusColor">@(p.Status ?? "N/A")</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        <!-- Recent Leads -->
+        <div class="glass-card rounded-2xl p-6" data-aos="fade-left">
+            <div class="flex items-center justify-between mb-5">
+                <h3 class="font-semibold text-white text-lg">Recent Leads</h3>
+                <a asp-controller="Agent" asp-action="Leads" class="text-xs text-gold-500 hover:text-gold-400 transition-theme">View All →</a>
+            </div>
+            @if (!recentLeads.Any())
+            {
+                <div class="text-center py-8 text-gray-500">
+                    <i class="fa-solid fa-users text-4xl mb-3 block opacity-30"></i>
+                    <p class="text-sm">No leads yet. Leads come in when visitors enquire about your listings.</p>
+                </div>
+            }
+            else
+            {
+                <div class="space-y-3">
+                    @foreach (var lead in recentLeads)
+                    {
+                        <div class="flex items-start gap-4 p-3 rounded-xl @(lead.IsRead ? "" : "bg-blue-500/5 border border-blue-500/10") hover:bg-white/5 transition-theme">
+                            <div class="w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                                @(lead.FullName.Length > 0 ? lead.FullName[0].ToString().ToUpper() : "?")
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center gap-2">
+                                    <p class="text-sm font-medium text-white truncate">@lead.FullName</p>
+                                    @if (!lead.IsRead)
+                                    {
+                                        <span class="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                                    }
+                                </div>
+                                <p class="text-xs text-gray-400 truncate">@(lead.Property?.Title ?? "Property")</p>
+                                <p class="text-xs text-gray-500 mt-0.5">@lead.SubmittedAt.ToString("MMM dd, yyyy")</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+    </div>
+</main>

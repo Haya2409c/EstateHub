@@ -1,0 +1,209 @@
+@{
+    ViewData["Title"] = "Advanced Search";
+}
+<!-- Page Header -->
+    <section class="pt-40 pb-20 bg-deep relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <img src="https://images.unsplash.com/photo-1613490900233-141c5040e67e?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-[#1E3A5F]/60"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <span class="text-gold uppercase tracking-[0.3em] text-sm font-semibold mb-4 block" data-aos="fade-up">Find Your</span>
+            <h1 class="text-white text-5xl md:text-7xl font-bold mb-6" data-aos="fade-up" data-aos-delay="100">Advanced <span class="text-gold italic font-normal">Search</span></h1>
+            <p class="max-w-2xl mx-auto text-lg text-white/85" data-aos="fade-up" data-aos-delay="200">Specify exactly what you're looking for to find the perfect luxury estate tailored to your lifestyle.</p>
+        </div>
+    </section>
+
+    <!-- Advanced Search Form -->
+    <section class="py-20 container mx-auto px-6 max-w-5xl">
+        <div class="glass-panel p-8 md:p-12 rounded-3xl" data-aos="fade-up">
+            <form asp-controller="Properties" asp-action="Index" method="get">
+                
+                <!-- Main Filters (Keyword, Location, Type, Status) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 border-b border-gray-200 pb-8">
+                    <!-- Keyword -->
+                    <div>
+                        <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-3">Keyword</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-500"></i>
+                            </div>
+                            <input type="text" placeholder="e.g. Pool, Beachfront" class="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-4 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors">
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div>
+                        <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-3">Location</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-map-marker-alt text-gray-500"></i>
+                            </div>
+                            <select class="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-10 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors appearance-none">
+                                <option value="" class="text-matte">All Locations</option>
+                                <option value="dubai" class="text-matte">Dubai</option>
+                                <option value="new-york" class="text-matte">New York</option>
+                                <option value="london" class="text-matte">London</option>
+                                <option value="paris" class="text-matte">Paris</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+                                <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Type -->
+                    <div>
+                        <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-3">Property Type</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-home text-gray-500"></i>
+                            </div>
+                            <select class="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-10 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors appearance-none">
+                                <option value="" class="text-matte">All Types</option>
+                                <option value="villa" class="text-matte">Luxury Villa</option>
+                                <option value="apartment" class="text-matte">Apartment</option>
+                                <option value="penthouse" class="text-matte">Penthouse</option>
+                                <option value="commercial" class="text-matte">Commercial</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+                                <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status -->
+                    <div>
+                        <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-3">Status</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-tag text-gray-500"></i>
+                            </div>
+                            <select class="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-10 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors appearance-none">
+                                <option value="" class="text-matte">Any Status</option>
+                                <option value="buy" class="text-matte">For Sale</option>
+                                <option value="rent" class="text-matte">For Rent</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+                                <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary Filters (Price, Beds, Baths, Size) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 border-b border-gray-200 pb-8">
+                    <!-- Price Range -->
+                    <div class="lg:col-span-2">
+                        <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-3">Price Range ($)</label>
+                        <div class="flex items-center gap-4">
+                            <input type="number" placeholder="Min Price" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors">
+                            <span class="text-gray-500">-</span>
+                            <input type="number" placeholder="Max Price" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors">
+                        </div>
+                    </div>
+
+                    <!-- Bedrooms -->
+                    <div>
+                        <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-3">Bedrooms</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-bed text-gray-500"></i>
+                            </div>
+                            <select class="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-10 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors appearance-none">
+                                <option value="" class="text-matte">Any</option>
+                                <option value="1" class="text-matte">1+</option>
+                                <option value="2" class="text-matte">2+</option>
+                                <option value="3" class="text-matte">3+</option>
+                                <option value="4" class="text-matte">4+</option>
+                                <option value="5" class="text-matte">5+</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+                                <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bathrooms -->
+                    <div>
+                        <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-3">Bathrooms</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-bath text-gray-500"></i>
+                            </div>
+                            <select class="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-10 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors appearance-none">
+                                <option value="" class="text-matte">Any</option>
+                                <option value="1" class="text-matte">1+</option>
+                                <option value="2" class="text-matte">2+</option>
+                                <option value="3" class="text-matte">3+</option>
+                                <option value="4" class="text-matte">4+</option>
+                                <option value="5" class="text-matte">5+</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+                                <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Area Size -->
+                    <div class="lg:col-span-2 mt-4 lg:mt-0">
+                        <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-3">Area Size (Sq Ft)</label>
+                        <div class="flex items-center gap-4">
+                            <input type="number" placeholder="Min Size" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors">
+                            <span class="text-gray-500">-</span>
+                            <input type="number" placeholder="Max Size" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Amenities Section -->
+                <div class="mb-10">
+                    <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-6">Must-Have Amenities</label>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 rounded bg-white border-gray-200 text-gold focus:ring-gold accent-gold">
+                            <span class="text-sm text-[#4a5568] group-hover:text-gold transition-colors">Swimming Pool</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 rounded bg-white border-gray-200 text-gold focus:ring-gold accent-gold">
+                            <span class="text-sm text-[#4a5568] group-hover:text-gold transition-colors">Gym / Fitness</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 rounded bg-white border-gray-200 text-gold focus:ring-gold accent-gold">
+                            <span class="text-sm text-[#4a5568] group-hover:text-gold transition-colors">Smart Home</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 rounded bg-white border-gray-200 text-gold focus:ring-gold accent-gold">
+                            <span class="text-sm text-[#4a5568] group-hover:text-gold transition-colors">Ocean View</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 rounded bg-white border-gray-200 text-gold focus:ring-gold accent-gold">
+                            <span class="text-sm text-[#4a5568] group-hover:text-gold transition-colors">Private Garage</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 rounded bg-white border-gray-200 text-gold focus:ring-gold accent-gold">
+                            <span class="text-sm text-[#4a5568] group-hover:text-gold transition-colors">24/7 Security</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 rounded bg-white border-gray-200 text-gold focus:ring-gold accent-gold">
+                            <span class="text-sm text-[#4a5568] group-hover:text-gold transition-colors">Helipad</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="checkbox" class="w-5 h-5 rounded bg-white border-gray-200 text-gold focus:ring-gold accent-gold">
+                            <span class="text-sm text-[#4a5568] group-hover:text-gold transition-colors">Private Garden</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit" class="btn-gold !py-4 !px-12 text-lg font-bold shadow-[0_10px_30px_rgba(212,175,55,0.3)] hover:shadow-[0_10px_40px_rgba(212,175,55,0.5)]">
+                        <i class="fas fa-search mr-2"></i> Find Properties
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->

@@ -1,0 +1,304 @@
+"""
+REALTORS PORTAL - DATABASE ENTITY RELATIONSHIP DIAGRAM (ERD)
+
+Legend:
+  [Entity Name]
+  - property (type) - PK or FK indicator
+  → One-to-Many relationship
+  ↔ One-to-One relationship
+
+═══════════════════════════════════════════════════════════════════════════════
+
+GEOGRAPHIC HIERARCHY (Foundation Layer)
+═══════════════════════════════════════
+
+┌─────────────┐
+│   Country   │
+│  (1-to-M)   │
+│  - Id (PK)  │
+│  - Name     │
+│  - IsoCode  │
+└─────────────┘
+      │
+      │ 1 → M
+      ↓
+┌─────────────┐
+│   Region    │
+│  (1-to-M)   │
+│  - Id (PK)  │
+│  - Name     │
+│  - CountryId (FK) ─→ Country
+└─────────────┘
+      │
+      │ 1 → M
+      ↓
+┌─────────────┐
+│    City     │
+│  (1-to-M)   │
+│  - Id (PK)  │
+│  - Name     │
+│  - RegionId (FK) ─→ Region
+└─────────────┘
+      │
+      │ 1 → M
+      ↓
+┌─────────────┐
+│    Area     │
+│  (1-to-M)   │
+│  - Id (PK)  │
+│  - Name     │
+│  - CityId (FK) ─→ City
+└─────────────┘
+      │
+      │ 1 → M
+      ↓
+   Property
+   (see below)
+
+
+PROPERTY CORE (Central Layer)
+═════════════════════════════
+
+┌──────────────┐
+│  Category    │
+│  (1-to-M)    │
+│  - Id (PK)   │
+│  - Name      │
+│  - Slug      │
+│  - Description
+└──────────────┘
+      │
+      │ 1 → M
+      ↓
+┌────────────────────────────────────┐
+│          Property                   │
+│        (Business Core)              │
+│                                     │
+│  - Id (PK)                          │
+│  - Title                            │
+│  - Description                      │
+│  - Price                            │
+│  - PropertyType                     │
+│  - Bedrooms, Bathrooms, AreaSqft    │
+│  - Address                          │
+│  - Latitude, Longitude              │
+│  - IsFeatured                       │
+│  - ListedDate                       │
+│                                     │
+│  Foreign Keys:                      │
+│  - CategoryId (FK) → Category       │
+│  - AgentId (FK) → Agent [nullable]  │
+│  - AreaId (FK) → Area [nullable]    │
+│                                     │
+│  Relationships:                     │
+│  - 1 Category → M Properties        │
+│  - 1 Agent → M Properties           │
+│  - 1 Area → M Properties            │
+│  - 1 Property → M PropertyImages    │
+└────────────────────────────────────┘
+      │
+      │ 1 → M
+      ↓
+┌──────────────────┐
+│  PropertyImage   │
+│   (M-to-1)       │
+│                  │
+│  - Id (PK)       │
+│  - Url           │
+│  - Caption       │
+│  - SortOrder     │
+│  - IsPrimary     │
+│  - PropertyId (FK) ─→ Property
+└──────────────────┘
+
+
+AGENT CORE (Actor Layer)
+═══════════════════════
+
+┌─────────────────────────┐
+│       Agent             │
+│     (1-to-M)            │
+│                         │
+│  - Id (PK)              │
+│  - FullName             │
+│  - Slug                 │
+│  - Email                │
+│  - Phone                │
+│  - PhotoUrl             │
+│  - Bio                  │
+│  - YearsExperience      │
+│  - Rating               │
+│                         │
+│  Relationships:         │
+│  - 1 Agent → M Property │
+│  (via Property.AgentId) │
+└─────────────────────────┘
+
+
+CONTENT LAYERS (Information Layer)
+══════════════════════════════════
+
+┌──────────────────┐       ┌──────────────────┐
+│      News        │       │ ContactMessage   │
+│   (Standalone)   │       │  (Standalone)    │
+│                  │       │                  │
+│  - Id (PK)       │       │  - Id (PK)       │
+│  - Title         │       │  - FullName      │
+│  - Slug          │       │  - Email         │
+│  - Summary       │       │  - Phone         │
+│  - Content       │       │  - Subject       │
+│  - Author        │       │  - Message       │
+│  - PublishedAt   │       │  - SubmittedAt   │
+│  - ThumbnailUrl  │       │  - IsRead        │
+└──────────────────┘       └──────────────────┘
+
+No foreign keys - standalone content entities
+Can be extended later with authors, categories, etc.
+
+
+COMPLETE HIERARCHY VIEW
+═══════════════════════
+
+Country
+  ├─ Region(s)
+  │   ├─ City(ies)
+  │   │   ├─ Area(s)
+  │   │   │   └─ Property(ies)
+  │   │   │       ├─ PropertyImage(s) [1 or more, 1 primary]
+  │   │   │       ├─ Category [1 per property]
+  │   │   │       └─ Agent [0 or 1 per property]
+  │   │   │
+  │   │   └─ (City contains areas, areas contain properties)
+  │   │
+  │   └─ (Region contains cities)
+  │
+  └─ (Country contains regions)
+
+Agent
+  └─ Property(ies) [multiple properties listed by agent]
+
+Category
+  └─ Property(ies) [multiple properties in one category]
+
+News (Global)
+  └─ [Standalone, no FK relationships]
+
+ContactMessage (Global)
+  └─ [Standalone, no FK relationships]
+
+
+CARDINALITY SUMMARY
+═══════════════════
+
+One-to-Many (1:M):
+  Country    → Region    (1:M, Cascade Delete)
+  Region     → City      (1:M, Cascade Delete)
+  City       → Area      (1:M, Cascade Delete)
+  Area       → Property  (1:M, SetNull on delete)
+  Category   → Property  (1:M, Restrict delete)
+  Agent      → Property  (1:M, SetNull on delete)
+  Property   → PropertyImage (1:M, Cascade delete)
+
+One-to-One (1:1):
+  None currently
+
+Many-to-Many (M:M):
+  None currently (future: Property ↔ Amenity)
+
+
+KEY CONSTRAINTS
+═══════════════
+
+PRIMARY KEYS:
+  All entities use IDENTITY INT PK
+  Exception: Properties use surrogate key Int, but queryable by Slug
+
+FOREIGN KEYS:
+  Most use Restrict or Cascade delete behavior
+  Agent FK uses SetNull (property can exist without agent)
+  Area FK uses SetNull (property can exist without area)
+  Geographic FKs use Cascade (when region deleted, cities/areas/properties deleted)
+
+UNIQUE CONSTRAINTS (Index):
+  Category.Slug - Non-unique, for SEO/routing
+  News.Slug - Non-unique, for SEO/routing
+  Property.Slug - Non-unique (future: unique per agent/area?)
+  Agent.Slug - Non-unique
+
+INDEXES (Performance):
+  Property: 
+    - (CategoryId, IsFeatured, ListedDate DESC)
+    - (AreaId, Price, ListedDate DESC)
+    - (AgentId, ListedDate DESC)
+    - (Price, Bedrooms, Bathrooms)
+
+  PropertyImage:
+    - (PropertyId, IsPrimary DESC)
+
+  Geographic:
+    - (CountryId), (RegionId), (CityId) for JOINs
+
+
+FUTURE EXTENSIONS
+═════════════════
+
+When Seller Dashboard added:
+  Seller (new)
+    - Id (PK)
+    - AspNetUserId (FK) → AspNetUsers
+    └─ SellerSubscription(s) [M:1]
+       ├─ SubscriptionPackage (FK)
+       ├─ StartDate, EndDate
+       └─ Status
+
+When Agent Dashboard added:
+  Agent extended with:
+    - AspNetUserId (FK) → AspNetUsers [optional link to auth]
+    - LicenseNumber
+    - VerificationStatus
+    └─ AgentMetrics [1:M]
+
+When Admin Panel added:
+  AdminUser (via AspNetUser roles)
+  AuditLog [1:M]
+  SiteSettings [1:1 or global KV table]
+
+
+CONSTRAINTS & BUSINESS RULES
+═════════════════════════════
+
+1. Geographic Hierarchy:
+   - A Property must exist in an Area
+   - An Area must belong to a City
+   - A City must belong to a Region
+   - A Region must belong to a Country
+   - Cascading deletes ensure referential integrity
+
+2. Property Listing:
+   - CategoryId is REQUIRED (what type of property)
+   - AgentId is OPTIONAL (can be unassigned)
+   - AreaId is OPTIONAL (can be generic/not located)
+   - Must have at least 0 images (but typically 1+ primary)
+
+3. Images:
+   - IsPrimary = true for thumbnail on listing
+   - SortOrder determines gallery order
+   - Multiple IsPrimary = true allowed (app logic handles first)
+
+4. Contact Messages:
+   - IsRead flag for admin dashboard
+   - SubmittedAt auto-set to UTC now
+
+5. News:
+   - PublishedAt auto-set to UTC now
+   - No edit history (immutable after publish)
+
+6. Agents:
+   - Slug used for URL routing (/agents/profile/hifza)
+   - Rating stored as double (0-5.0)
+   - YearsExperience can be null
+
+"""
+
+# This is a visual documentation file for the ERD
+# It can be converted to Mermaid, PlantUML, or drawn in a tool like Lucidchart
