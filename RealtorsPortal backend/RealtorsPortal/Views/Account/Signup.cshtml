@@ -20,7 +20,7 @@
 
             <form asp-action="Signup" asp-controller="Account" method="POST">
                 @Html.AntiForgeryToken()
-                <input asp-for="AccountType" type="hidden" id="account_type" value="Seller">
+                <input asp-for="AccountType" type="hidden" id="account_type">
 
                 <!-- Account Type Selector -->
                 <div class="mb-8">
@@ -125,10 +125,18 @@
             });
 
             const selectedBtn = document.getElementById('type-' + type);
-            selectedBtn.classList.remove('border-gray-200', 'text-[#4a5568]');
-            selectedBtn.classList.add('border-gold', 'bg-gold/10', 'text-gold');
+            if (selectedBtn) {
+                selectedBtn.classList.remove('border-gray-200', 'text-[#4a5568]');
+                selectedBtn.classList.add('border-gold', 'bg-gold/10', 'text-gold');
+            }
 
             document.getElementById('account_type').value = type.charAt(0).toUpperCase() + type.slice(1);
         }
+
+        // Restore button state on page load (preserves selection after form re-render on error)
+        document.addEventListener('DOMContentLoaded', function () {
+            const val = document.getElementById('account_type').value;
+            if (val) selectAccountType(val.toLowerCase());
+        });
     </script>
 }

@@ -1,88 +1,80 @@
+@model RealtorsPortal.Models.ViewModels.Agents.AgentListViewModel
 @{
-    ViewData["Title"] = "Agents";
+    ViewData["Title"] = "Our Agents";
 }
+
 <!-- Header -->
-    <section class="pt-32 pb-20 bg-deep border-b border-gray-200 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[#1E3A5F]/40"></div>
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <span class="text-gold uppercase tracking-[0.3em] text-sm font-semibold mb-4 block" data-aos="fade-up">Industry Veterans</span>
-            <h1 class="text-white text-5xl md:text-6xl font-bold mb-6" data-aos="fade-up" data-aos-delay="100">Meet Our <span class="text-gold italic font-normal">Elite Agents</span></h1>
-            <p class="max-w-2xl mx-auto text-white/85" data-aos="fade-up" data-aos-delay="200">The world's most trusted luxury real estate advisors, dedicated to finding your architectural masterpiece.</p>
-        </div>
-    </section>
+<section class="pt-32 pb-20 bg-deep border-b border-gray-200 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[#1E3A5F]/40"></div>
+    <div class="container mx-auto px-6 text-center relative z-10">
+        <span class="text-gold uppercase tracking-[0.3em] text-sm font-semibold mb-4 block" data-aos="fade-up">Industry Veterans</span>
+        <h1 class="text-white text-5xl md:text-6xl font-bold mb-6" data-aos="fade-up" data-aos-delay="100">Meet Our <span class="text-gold italic font-normal">Elite Agents</span></h1>
+        <p class="max-w-2xl mx-auto text-white/85" data-aos="fade-up" data-aos-delay="200">The world's most trusted luxury real estate advisors, dedicated to finding your architectural masterpiece.</p>
+    </div>
+</section>
 
-    <!-- Agents Search & Grid -->
-    <section class="py-20 container mx-auto px-6">
-        <div class="mb-12 max-w-2xl mx-auto" data-aos="fade-up">
-            <div class="glass-panel p-3 rounded-full flex items-center border border-gray-200 focus-within:border-gold transition-colors">
-                <i class="fas fa-search text-gray-500 ml-4 mr-2"></i>
-                <input type="text" placeholder="Search agent by name, agency, or location..." class="w-full bg-transparent border-none outline-none px-4 text-gray-800 placeholder-gray-500 text-sm">
-                <button class="w-12 h-12 rounded-full bg-gold flex items-center justify-center shrink-0 hover:scale-105 transition-transform">
-                    <i class="fas fa-arrow-right text-white"></i>
-                </button>
-            </div>
+<!-- Agents Search & Grid -->
+<section class="py-20 container mx-auto px-6">
+
+    <!-- Search -->
+    <form method="get" asp-action="Index" asp-controller="Agents" class="mb-12 max-w-2xl mx-auto" data-aos="fade-up">
+        <div class="glass-panel p-3 rounded-full flex items-center border border-gray-200 focus-within:border-gold transition-colors">
+            <i class="fas fa-search text-gray-500 ml-4 mr-2"></i>
+            <input type="text" name="search" value="@ViewBag.Search" placeholder="Search agent by name or email..."
+                   class="w-full bg-transparent border-none outline-none px-4 text-gray-800 placeholder-gray-500 text-sm">
+            <button type="submit" class="w-12 h-12 rounded-full bg-gold flex items-center justify-center shrink-0 hover:scale-105 transition-transform">
+                <i class="fas fa-arrow-right text-white"></i>
+            </button>
         </div>
+    </form>
+
+    @if (!Model.Agents.Any())
+    {
+        <div class="text-center py-20">
+            <i class="fas fa-user-slash text-4xl text-gray-300 mb-4"></i>
+            <p class="text-gray-500 text-lg">No agents found.</p>
+            @if (!string.IsNullOrWhiteSpace(ViewBag.Search as string))
+            {
+                <a asp-action="Index" asp-controller="Agents" class="mt-4 inline-block text-gold hover:underline">Clear search</a>
+            }
+        </div>
+    }
+    else
+    {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            <!-- Agent 1 -->
-            <div class="glass-panel p-8 rounded-3xl text-center group hover:border-gold transition-all" data-aos="fade-up">
-                <div class="w-40 h-40 mx-auto mb-8 relative">
-                    <img src="/assets/images/agent_hifza.png" class="w-full h-full object-cover rounded-full border-4 border-gold/20 grayscale group-hover:grayscale-0 transition-all">
-                    <div class="absolute bottom-0 right-2 w-10 h-10 bg-gold rounded-full flex items-center justify-center border-4 border-matte">
-                        <i class="fas fa-check text-sm text-white"></i>
+            @foreach (var agent in Model.Agents)
+            {
+                var photo  = string.IsNullOrEmpty(agent.PhotoUrl) ? "/assets/images/agent1.png" : agent.PhotoUrl;
+                var joined = agent.JoinedAt.Year;
+                <div class="glass-panel p-8 rounded-3xl text-center group hover:border-gold transition-all" data-aos="fade-up">
+                    <div class="w-40 h-40 mx-auto mb-8 relative">
+                        <img src="@photo" alt="@agent.FullName"
+                             class="w-full h-full object-cover rounded-full border-4 border-gold/20 grayscale group-hover:grayscale-0 transition-all"
+                             onerror="this.src='/assets/images/agent1.png'">
+                        <div class="absolute bottom-0 right-2 w-10 h-10 bg-gold rounded-full flex items-center justify-center border-4 border-matte">
+                            <i class="fas fa-check text-sm text-white"></i>
+                        </div>
                     </div>
+                    <h3 class="text-2xl font-bold mb-1">@agent.FullName.ToUpper()</h3>
+                    <p class="text-gold text-sm font-bold uppercase tracking-widest mb-6">Licensed Agent</p>
+                    <div class="grid grid-cols-2 gap-4 py-6 border-y border-gray-200 mb-8">
+                        <div>
+                            <p class="text-xl font-bold text-[#1E3A5F]">@agent.ListingCount</p>
+                            <p class="text-xs text-gray-500 uppercase">Listings</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-bold text-[#1E3A5F]">@joined</p>
+                            <p class="text-xs text-gray-500 uppercase">Joined</p>
+                        </div>
+                    </div>
+                    <a asp-action="Profile" asp-controller="Agents" asp-route-id="@agent.Id"
+                       class="w-full btn-gold py-3 text-sm font-semibold rounded-xl block">
+                        View Profile
+                    </a>
                 </div>
-                <h3 class="text-2xl font-bold mb-1">HIFZA SHAHEEN</h3>
-                <p class="text-gold text-sm font-bold uppercase tracking-widest mb-6">Founder & Managing Director</p>
-                <div class="grid grid-cols-2 gap-4 py-6 border-y border-gray-200 mb-8">
-                    <div>
-                        <p class="text-xl font-bold text-[#1E3A5F]">120+</p>
-                        <p class="text-xs text-gray-500 uppercase">Sales Closed</p>
-                    </div>
-                    <div>
-                        <p class="text-xl font-bold text-[#1E3A5F]">15 yrs</p>
-                        <p class="text-xs text-gray-500 uppercase">Experience</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Agent 2 -->
-            <div class="glass-panel p-8 rounded-3xl text-center group hover:border-gold transition-all" data-aos="fade-up" data-aos-delay="100">
-                <div class="w-40 h-40 mx-auto mb-8 relative">
-                    <img src="/assets/images/agent_tayyaba.png" class="w-full h-full object-cover rounded-full border-4 border-gold/20 grayscale group-hover:grayscale-0 transition-all">
-                </div>
-                <h3 class="text-2xl font-bold mb-1">TAYYABA ASHRAF</h3>
-                <p class="text-gold text-sm font-bold uppercase tracking-widest mb-6">Senior Investment Advisor</p>
-                <div class="grid grid-cols-2 gap-4 py-6 border-y border-gray-200 mb-8">
-                    <div>
-                        <p class="text-xl font-bold text-[#1E3A5F]">85+</p>
-                        <p class="text-xs text-gray-500 uppercase">Sales Closed</p>
-                    </div>
-                    <div>
-                        <p class="text-xl font-bold text-[#1E3A5F]">10 yrs</p>
-                        <p class="text-xs text-gray-500 uppercase">Experience</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Agent 3 -->
-            <div class="glass-panel p-8 rounded-3xl text-center group hover:border-gold transition-all" data-aos="fade-up" data-aos-delay="200">
-                <div class="w-40 h-40 mx-auto mb-8 relative">
-                    <img src="/assets/images/agent_harmain.png" class="w-full h-full object-cover rounded-full border-4 border-gold/20 grayscale group-hover:grayscale-0 transition-all">
-                </div>
-                <h3 class="text-2xl font-bold mb-1">HARMAIN</h3>
-                <p class="text-gold text-sm font-bold uppercase tracking-widest mb-6">Global Property Specialist</p>
-                <div class="grid grid-cols-2 gap-4 py-6 border-y border-gray-200 mb-8">
-                    <div>
-                        <p class="text-xl font-bold text-[#1E3A5F]">150+</p>
-                        <p class="text-xs text-gray-500 uppercase">Sales Closed</p>
-                    </div>
-                    <div>
-                        <p class="text-xl font-bold text-[#1E3A5F]">18 yrs</p>
-                        <p class="text-xs text-gray-500 uppercase">Experience</p>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
-    </section>
+    }
+</section>
 
-    <!-- Footer -->
+<!-- Footer -->

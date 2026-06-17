@@ -9,6 +9,17 @@ namespace RealtorsPortal.Models.ViewModels.Agents
     ///   - IAgentService.GetAllAgentsAsync(filter, page, pageSize)
     /// Controller Action: AgentsController.Index(string? specialization, string? location, int page)
     /// </summary>
+    public class AgentCardViewModel
+    {
+        public string Id { get; set; } = null!;
+        public string FullName { get; set; } = null!;
+        public string? Email { get; set; }
+        public string? Phone { get; set; }
+        public string? PhotoUrl { get; set; }
+        public int ListingCount { get; set; }
+        public DateTime JoinedAt { get; set; }
+    }
+
     public class AgentListViewModel
     {
         public List<AgentCardViewModel> Agents { get; set; } = new();

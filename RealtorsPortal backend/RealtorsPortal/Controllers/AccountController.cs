@@ -97,7 +97,13 @@ namespace RealtorsPortal.Controllers
             if (result.Succeeded)
             {
                 var role = model.AccountType == "Agent" ? "Agent" : "Seller";
-                await _userManager.AddToRoleAsync(user, role);
+                var roleResult = await _userManager.AddToRoleAsync(user, role);
+                if (!roleResult.Succeeded)
+                {
+                    await _userManager.DeleteAsync(user);
+                    ModelState.AddModelError(string.Empty, "Account setup failed. Please try again.");
+                    return View(model);
+                }
 
                 if (role == "Seller")
                 {
