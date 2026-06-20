@@ -1,0 +1,205 @@
+@using RealtorsPortal.Models.Entities
+@{
+    ViewData["Title"] = "Users";
+    Layout = "_AdminLayout";
+
+    var users               = ViewBag.Users as List<ApplicationUser> ?? new();
+    var sellerCounts        = ViewBag.SellerListingCounts as Dictionary<string,int> ?? new();
+    var selectedType        = ViewBag.SelectedType as string ?? "all";
+    var search              = ViewBag.Search as string ?? "";
+    var totalAgents         = (int)(ViewBag.TotalAgents  ?? 0);
+    var totalSellers        = (int)(ViewBag.TotalSellers ?? 0);
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="mb-5 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-xl text-sm">
+        @TempData["Success"]
+    </div>
+}
+
+<!-- Stats -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+    <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm text-center">
+        <p class="text-3xl font-bold text-[#0F2040]">@(totalAgents + totalSellers)</p>
+        <p class="text-xs text-gray-500 mt-1 font-medium">Total Users</p>
+    </div>
+    <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm text-center">
+        <p class="text-3xl font-bold text-blue-600">@totalAgents</p>
+        <p class="text-xs text-gray-500 mt-1 font-medium">Agents</p>
+    </div>
+    <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm text-center">
+        <p class="text-3xl font-bold text-purple-600">@totalSellers</p>
+        <p class="text-xs text-gray-500 mt-1 font-medium">Sellers</p>
+    </div>
+    <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm text-center">
+        <p class="text-3xl font-bold text-red-500">
+            @users.Count(u => u.LockoutEnd.HasValue && u.LockoutEnd > DateTimeOffset.UtcNow)
+        </p>
+        <p class="text-xs text-gray-500 mt-1 font-medium">Blocked</p>
+    </div>
+</div>
+
+<!-- Filter + Search -->
+<form method="get" asp-controller="Admin" asp-action="Users"
+      class="bg-white rounded-xl border border-gray-200 p-4 mb-5 shadow-sm flex flex-wrap gap-3 items-center">
+
+    <div class="flex gap-1">
+        @foreach (var tab in new[] { ("all","All"), ("Agent","Agents"), ("Seller","Sellers") })
+        {
+            <a href="@Url.Action("Users","Admin", new { type = tab.Item1, search })"
+               class="px-4 py-2 rounded-lg text-sm font-medium transition-colors
+                      @(selectedType == tab.Item1 ? "bg-[#0F2040] text-white" : "bg-gray-100 hover:bg-gray-200 text-gray-600")">
+                @tab.Item2
+            </a>
+        }
+    </div>
+
+    <div class="flex gap-2 ml-auto">
+        <input type="hidden" name="type" value="@selectedType" />
+        <input name="search" type="text" value="@search" placeholder="Search name or email…"
+               class="border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-[#0F2040] w-56 transition-colors" />
+        <button type="submit"
+                class="px-4 py-2 bg-[#0F2040] hover:bg-[#1a3a6e] text-white text-sm font-medium rounded-lg transition-colors">
+            Search
+        </button>
+        @if (!string.IsNullOrEmpty(search))
+        {
+            <a href="@Url.Action("Users","Admin", new { type = selectedType })"
+               class="px-3 py-2 border border-gray-200 hover:bg-gray-50 text-gray-500 text-sm rounded-lg transition-colors">
+                Clear
+            </a>
+        }
+    </div>
+</form>
+
+<!-- Table -->
+<div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+    @if (!users.Any())
+    {
+        <div class="text-center py-20 text-gray-400">
+            <i class="fas fa-users text-5xl opacity-20 mb-4 block"></i>
+            <p class="text-sm">No users found.</p>
+        </div>
+    }
+    else
+    {
+        <table class="w-full text-sm">
+            <thead class="bg-gray-50 border-b border-gray-200">
+                <tr>
+                    <th class="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">User</th>
+                    <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Type</th>
+                    <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Contact</th>
+                    <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Listings</th>
+                    <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Joined</th>
+                    <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                    <th class="text-right px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+                @foreach (var u in users)
+                {
+                    bool isBlocked = u.LockoutEnd.HasValue && u.LockoutEnd > DateTimeOffset.UtcNow;
+                    int listingCount = u.AccountType == "Seller" && sellerCounts.TryGetValue(u.Id, out var sc) ? sc : 0;
+
+                    var initials = string.Join("", (u.FullName ?? "?")
+                        .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                        .Take(2).Select(w => w[0].ToString().ToUpper()));
+
+                    <tr class="hover:bg-gray-50 transition-colors @(isBlocked ? "opacity-60" : "")">
+                        <!-- User -->
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                @if (!string.IsNullOrEmpty(u.PhotoUrl))
+                                {
+                                    <img src="@u.PhotoUrl" alt="@u.FullName"
+                                         class="w-9 h-9 rounded-full object-cover flex-shrink-0 border border-gray-200" />
+                                }
+                                else
+                                {
+                                    <div class="w-9 h-9 rounded-full bg-[#0F2040]/10 text-[#0F2040] flex items-center justify-center text-xs font-bold flex-shrink-0">
+                                        @initials
+                                    </div>
+                                }
+                                <div>
+                                    <p class="font-semibold text-gray-800">@u.FullName</p>
+                                    <p class="text-xs text-gray-400 truncate max-w-[160px]">@u.Email</p>
+                                </div>
+                            </div>
+                        </td>
+
+                        <!-- Type badge -->
+                        <td class="px-4 py-4">
+                            @if (u.AccountType == "Agent")
+                            {
+                                <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">Agent</span>
+                            }
+                            else
+                            {
+                                <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-700">Seller</span>
+                            }
+                        </td>
+
+                        <!-- Contact -->
+                        <td class="px-4 py-4 text-gray-500 text-xs">@(u.PhoneNumber ?? "—")</td>
+
+                        <!-- Listings -->
+                        <td class="px-4 py-4">
+                            <span class="font-mono font-semibold text-gray-700">@listingCount</span>
+                        </td>
+
+                        <!-- Joined -->
+                        <td class="px-4 py-4 text-gray-500 text-xs">@u.CreatedAt.ToString("dd MMM yyyy")</td>
+
+                        <!-- Status -->
+                        <td class="px-4 py-4">
+                            @if (isBlocked)
+                            {
+                                <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700">Blocked</span>
+                            }
+                            else
+                            {
+                                <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">Active</span>
+                            }
+                        </td>
+
+                        <!-- Actions -->
+                        <td class="px-6 py-4">
+                            <div class="flex items-center justify-end gap-2">
+                                <!-- Block / Unblock -->
+                                <form asp-action="ToggleUserStatus" asp-controller="Admin" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@u.Id" />
+                                    <input type="hidden" name="returnType" value="@selectedType" />
+                                    <button type="submit"
+                                            class="px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors
+                                                   @(isBlocked
+                                                       ? "bg-green-100 hover:bg-green-200 text-green-700"
+                                                       : "bg-orange-100 hover:bg-orange-200 text-orange-700")">
+                                        @(isBlocked ? "Unblock" : "Block")
+                                    </button>
+                                </form>
+
+                                <!-- Delete -->
+                                <form asp-action="DeleteUser" asp-controller="Admin" method="post"
+                                      onsubmit="return confirm('Delete @u.FullName? This cannot be undone.')">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@u.Id" />
+                                    <input type="hidden" name="returnType" value="@selectedType" />
+                                    <button type="submit"
+                                            class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-red-100 hover:bg-red-200 text-red-700 transition-colors">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="px-6 py-3 border-t border-gray-100 text-xs text-gray-400">
+            @users.Count user(s) shown
+        </div>
+    }
+</div>

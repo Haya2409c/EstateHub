@@ -1,0 +1,356 @@
+@{
+    Layout = "_SellerLayout";
+    ViewData["Title"] = "Dashboard";
+    ViewData["PageHeading"] = "Dashboard Overview";
+}
+
+<main class="flex-1 p-6 max-w-7xl mx-auto w-full overflow-x-hidden">
+
+    <!-- Row 1: Welcome Header -->
+    <div class="glass-panel p-8 mb-8 relative overflow-hidden" data-aos="fade-down">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-[#2563EB]/10 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
+        <div class="relative z-10">
+            <h2 class="font-outfit font-bold text-3xl text-[#1E3A5F] mb-2">
+                Welcome Back, <span class="text-[#2563EB]">@User.Identity!.Name</span>! 👋
+            </h2>
+            <p class="font-poppins text-[#718096] mb-4">Here's what's happening with your properties today.</p>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-[#F4F6F9] rounded-lg shadow-sm text-sm font-poppins text-[#1E3A5F]">
+                <i class="fa-regular fa-calendar text-[#2563EB]"></i>
+                <span id="currentDateDisplay"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 2: Stats Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="glass-panel p-6 flex items-center justify-between group hover:-translate-y-1 transition-transform cursor-pointer" data-aos="fade-up" data-aos-delay="0">
+            <div>
+                <div class="font-poppins text-sm text-[#718096] mb-1 group-hover:text-[#2563EB] transition-colors">Total Properties</div>
+                <div class="font-outfit font-bold text-4xl text-[#1E3A5F]">@ViewBag.TotalProperties</div>
+            </div>
+            <div class="w-14 h-14 rounded-2xl bg-[#2563EB]/10 flex items-center justify-center group-hover:bg-[#2563EB] group-hover:text-white transition-colors">
+                <i class="fa-solid fa-building text-[#2563EB] text-2xl group-hover:text-white transition-colors"></i>
+            </div>
+        </div>
+        <div class="glass-panel p-6 flex items-center justify-between group hover:-translate-y-1 transition-transform cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+            <div>
+                <div class="font-poppins text-sm text-[#718096] mb-1 group-hover:text-green-600 transition-colors">For Buy</div>
+                <div class="font-outfit font-bold text-4xl text-[#1E3A5F]">@ViewBag.ForBuyCount</div>
+            </div>
+            <div class="w-14 h-14 rounded-2xl bg-green-500/10 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-colors">
+                <i class="fa-solid fa-tag text-green-600 text-2xl group-hover:text-white transition-colors"></i>
+            </div>
+        </div>
+        <div class="glass-panel p-6 flex items-center justify-between group hover:-translate-y-1 transition-transform cursor-pointer" data-aos="fade-up" data-aos-delay="200">
+            <div>
+                <div class="font-poppins text-sm text-[#718096] mb-1 group-hover:text-yellow-600 transition-colors">For Rent</div>
+                <div class="font-outfit font-bold text-4xl text-[#1E3A5F]">@ViewBag.ForRentCount</div>
+            </div>
+            <div class="w-14 h-14 rounded-2xl bg-yellow-500/10 flex items-center justify-center group-hover:bg-yellow-500 group-hover:text-white transition-colors">
+                <i class="fa-solid fa-key text-yellow-600 text-2xl group-hover:text-white transition-colors"></i>
+            </div>
+        </div>
+        <div class="glass-panel p-6 flex items-center justify-between group hover:-translate-y-1 transition-transform cursor-pointer" data-aos="fade-up" data-aos-delay="300">
+            <div>
+                <div class="font-poppins text-sm text-[#718096] mb-1 group-hover:text-red-600 transition-colors">For Sale</div>
+                <div class="font-outfit font-bold text-4xl text-[#1E3A5F]">@ViewBag.ForSellCount</div>
+            </div>
+            <div class="w-14 h-14 rounded-2xl bg-red-500/10 flex items-center justify-center group-hover:bg-red-500 group-hover:text-white transition-colors">
+                <i class="fa-solid fa-briefcase text-red-600 text-2xl group-hover:text-white transition-colors"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 3: Quick Actions -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8" data-aos="fade-up">
+        <a asp-controller="Seller" asp-action="CreateListing" class="glass-panel p-5 flex items-center gap-4 hover:border-[#D4AF37] hover:shadow-lg transition-all group">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#1E3A5F] to-[#2D4A8A] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="font-outfit font-semibold text-[#1E3A5F]">Add New Property</div>
+        </a>
+        <a asp-controller="Seller" asp-action="MyListings" class="glass-panel p-5 flex items-center gap-4 hover:border-[#2563EB] hover:shadow-lg transition-all group">
+            <div class="w-12 h-12 rounded-full bg-white border border-[#F4F6F9] text-[#2563EB] flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-list"></i>
+            </div>
+            <div class="font-outfit font-semibold text-[#1E3A5F]">View My Properties</div>
+        </a>
+        <a asp-controller="Seller" asp-action="UploadImages" class="glass-panel p-5 flex items-center gap-4 hover:border-[#2563EB] hover:shadow-lg transition-all group">
+            <div class="w-12 h-12 rounded-full bg-white border border-[#F4F6F9] text-[#2563EB] flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                <i class="fa-regular fa-images"></i>
+            </div>
+            <div class="font-outfit font-semibold text-[#1E3A5F]">Upload Images</div>
+        </a>
+        <a asp-controller="Seller" asp-action="Subscription" class="glass-panel p-5 flex items-center gap-4 hover:border-[#D4AF37] hover:shadow-lg transition-all group">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B8960B] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-crown"></i>
+            </div>
+            <div class="font-outfit font-semibold text-[#1E3A5F]">Renew Package</div>
+        </a>
+    </div>
+
+    <!-- Row 4: Recent Properties Table -->
+    <div class="glass-panel mb-8 overflow-hidden" data-aos="fade-up">
+        <div class="p-6 border-b border-[#1E3A5F]/10 flex justify-between items-center">
+            <h2 class="section-heading mb-0">Recent Properties</h2>
+            <a asp-controller="Seller" asp-action="MyListings" class="text-sm font-medium text-[#2563EB] hover:underline">View All</a>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-[#F8F7F4] text-[#718096] font-poppins text-xs uppercase tracking-wider">
+                        <th class="p-4 font-semibold">Property</th>
+                        <th class="p-4 font-semibold">Price</th>
+                        <th class="p-4 font-semibold">Location</th>
+                        <th class="p-4 font-semibold">Status</th>
+                        <th class="p-4 font-semibold text-right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-[#1E3A5F]/10 font-poppins text-sm text-[#1E3A5F]">
+                    @{
+                        var recent = ViewBag.RecentProperties as List<RealtorsPortal.Models.Entities.Property>;
+                    }
+                    @if (recent == null || !recent.Any())
+                    {
+                        <tr>
+                            <td colspan="5" class="p-12 text-center">
+                                <i class="fa-solid fa-house-chimney text-5xl text-[#CBD5E0] mb-4 block"></i>
+                                <p class="font-poppins text-[#718096]">No properties yet. <a asp-controller="Seller" asp-action="CreateListing" class="text-[#2563EB] hover:underline font-medium">Add your first property</a></p>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var prop in recent)
+                        {
+                            var badge = prop.Status?.ToLower() switch {
+                                "rent" => ("bg-blue-100 text-blue-700", "For Rent"),
+                                "sell" => ("bg-amber-100 text-amber-700", "For Sale"),
+                                _      => ("bg-green-100 text-green-700", "For Buy")
+                            };
+                            var img = prop.Images.FirstOrDefault(i => i.IsPrimary) ?? prop.Images.FirstOrDefault();
+                            <tr class="hover:bg-[#F8F7F4]/70 transition-colors">
+                                <td class="p-4">
+                                    <div class="flex items-center gap-3">
+                                        @if (img != null)
+                                        {
+                                            <img src="@img.Url" class="w-10 h-10 rounded-lg object-cover flex-shrink-0" alt="@prop.Title">
+                                        }
+                                        else
+                                        {
+                                            <div class="w-10 h-10 rounded-lg bg-[#1E3A5F]/10 flex items-center justify-center flex-shrink-0">
+                                                <i class="fa-solid fa-house text-[#1E3A5F]/40 text-sm"></i>
+                                            </div>
+                                        }
+                                        <span class="font-medium truncate max-w-[160px]">@prop.Title</span>
+                                    </div>
+                                </td>
+                                <td class="p-4 font-semibold">PKR @prop.Price.ToString("N0")</td>
+                                <td class="p-4 text-[#718096] truncate max-w-[140px]">@(prop.Address ?? "—")</td>
+                                <td class="p-4">
+                                    <span class="text-xs px-2.5 py-1 rounded-full font-semibold @badge.Item1">@badge.Item2</span>
+                                </td>
+                                <td class="p-4 text-right">
+                                    <a asp-controller="Seller" asp-action="EditListing" asp-route-id="@prop.Id"
+                                       class="text-[#2563EB] hover:underline text-xs font-medium">Edit</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+            </table>
+        </div>
+    </div>
+
+    <!-- Row 5: Package & Notifications -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <!-- Package Info -->
+        <div class="glass-panel p-6" data-aos="fade-right">
+            <h2 class="section-heading">Subscription Package</h2>
+            <div class="bg-gradient-to-br from-[#1E3A5F] to-[#2D4A8A] rounded-xl p-6 text-white mb-6 relative overflow-hidden shadow-lg border border-[#1E3A5F]/20">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+                <div class="flex justify-between items-start mb-6 relative z-10">
+                    <div>
+                        <div class="font-poppins text-sm text-white/80 uppercase tracking-wider mb-1">Current Package</div>
+                        <div class="font-outfit font-bold text-2xl flex items-center gap-2 text-[#D4AF37]">
+                            Basic <i class="fa-solid fa-star text-sm"></i>
+                        </div>
+                    </div>
+                    <span class="bg-green-500/20 text-green-300 text-xs px-2 py-1 rounded border border-green-500/30">Active</span>
+                </div>
+                <div class="relative z-10">
+                    <div class="flex justify-between font-poppins text-sm mb-2">
+                        <span>Listings Used: 0 / 10</span>
+                        <span class="text-white/80">Free Tier</span>
+                    </div>
+                    <div class="w-full bg-black/30 rounded-full h-2.5 mb-6">
+                        <div class="bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC] h-2.5 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <div class="flex gap-3">
+                        <a asp-controller="Seller" asp-action="Subscription" class="flex-1 btn-gold py-2 text-sm text-center text-[#1E3A5F] border-none bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC] hover:opacity-90 transition-opacity">Upgrade</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Leads -->
+        <div class="glass-panel p-6" data-aos="fade-left">
+            @{
+                var recentLeads = ViewBag.RecentLeads as List<RealtorsPortal.Models.Entities.PropertyEnquiry>;
+            }
+            <div class="flex justify-between items-center mb-5">
+                <div>
+                    <h2 class="section-heading mb-0">Recent Leads</h2>
+                    @if ((int)ViewBag.UnreadLeads > 0)
+                    {
+                        <span class="text-xs font-semibold text-white bg-red-500 px-2 py-0.5 rounded-full ml-2">@ViewBag.UnreadLeads new</span>
+                    }
+                </div>
+                <a asp-controller="Seller" asp-action="Leads" class="text-sm font-medium text-[#2563EB] hover:underline">View All</a>
+            </div>
+            @if (recentLeads == null || !recentLeads.Any())
+            {
+                <div class="flex flex-col items-center justify-center py-8 text-center">
+                    <i class="fa-regular fa-envelope-open text-4xl text-[#CBD5E0] mb-3"></i>
+                    <p class="font-poppins text-sm text-[#718096]">No leads yet.</p>
+                </div>
+            }
+            else
+            {
+                <ul class="divide-y divide-[#1E3A5F]/10 -mx-6 px-6">
+                    @foreach (var lead in recentLeads)
+                    {
+                        <li class="py-3 flex items-start gap-3 @(lead.IsRead ? "" : "bg-blue-50/50 -mx-6 px-6 rounded-lg")">
+                            <div class="w-8 h-8 rounded-full bg-[#1E3A5F]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-user text-[#1E3A5F]/50 text-xs"></i>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <div class="flex items-center justify-between gap-2">
+                                    <span class="font-semibold text-sm text-[#1E3A5F] truncate">@lead.FullName</span>
+                                    @if (!lead.IsRead)
+                                    {
+                                        <span class="w-2 h-2 rounded-full bg-blue-500 flex-shrink-0"></span>
+                                    }
+                                </div>
+                                <p class="text-xs text-[#718096] truncate">@(lead.Property?.Title ?? "General Enquiry")</p>
+                                <p class="text-xs text-[#718096] mt-0.5">@lead.SubmittedAt.ToString("MMM dd, h:mm tt")</p>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+
+    <!-- Row 6: Analytics & Timeline -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+        <!-- Analytics Chart -->
+        <div class="glass-panel p-6 lg:col-span-2" data-aos="fade-up">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="section-heading mb-0">Performance Analytics</h2>
+                <select class="text-sm bg-[#F4F6F9] border-none rounded-lg p-2 font-poppins text-[#1E3A5F] outline-none" style="width:auto;">
+                    <option>This Month</option>
+                    <option>Last Month</option>
+                    <option>This Year</option>
+                </select>
+            </div>
+            <div class="flex gap-6 mb-6">
+                <div>
+                    <div class="text-xs text-[#718096] font-poppins uppercase tracking-wide">Total Views</div>
+                    <div class="font-outfit font-bold text-2xl text-[#1E3A5F]">0</div>
+                </div>
+                <div>
+                    <div class="text-xs text-[#718096] font-poppins uppercase tracking-wide">Inquiries</div>
+                    <div class="font-outfit font-bold text-2xl text-[#1E3A5F]">@ViewBag.TotalLeads</div>
+                </div>
+            </div>
+            <div class="h-64 w-full">
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Timeline & Tips -->
+        <div class="flex flex-col gap-8">
+            <!-- Activity Timeline -->
+            <div class="glass-panel p-6" data-aos="fade-left">
+                <h2 class="section-heading">Recent Activity</h2>
+                <div class="flex flex-col items-center justify-center py-6 text-center">
+                    <i class="fa-regular fa-clock text-4xl text-[#CBD5E0] mb-3"></i>
+                    <p class="font-poppins text-sm text-[#718096]">No recent activity.</p>
+                </div>
+            </div>
+            <!-- Seller Tips -->
+            <div class="glass-panel p-6 bg-gradient-to-br from-[#F8F9FA] to-[#E9ECEF]" data-aos="fade-up">
+                <div class="flex items-center gap-2 mb-3">
+                    <i class="fa-solid fa-lightbulb text-yellow-500 text-xl"></i>
+                    <h2 class="font-outfit font-bold text-[#1E3A5F] m-0">Seller Tip</h2>
+                </div>
+                <p class="font-poppins text-sm text-[#4A5568] mb-3">Properties with more than 5 high-quality images get <strong>40% more inquiries</strong>. Update your galleries to boost visibility.</p>
+                <a asp-controller="Seller" asp-action="UploadImages" class="text-sm font-semibold text-[#2563EB] hover:underline">Upload Images &rarr;</a>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+@section Scripts {
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    AOS.init({ duration: 800, once: true, offset: 50 });
+
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+    const el = document.getElementById('currentDateDisplay');
+    if (el) el.textContent = new Date().toLocaleDateString('en-US', dateOptions);
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('performanceChart');
+        if (ctx) {
+            let gradient = ctx.getContext('2d').createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(37, 99, 235, 0.2)');
+            gradient.addColorStop(1, 'rgba(37, 99, 235, 0)');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                    datasets: [
+                        {
+                            label: 'Property Views',
+                            data: [0, 0, 0, 0],
+                            borderColor: '#2563EB',
+                            backgroundColor: gradient,
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Inquiries',
+                            type: 'bar',
+                            data: [0, 0, 0, 0],
+                            backgroundColor: '#D4AF37',
+                            borderRadius: 4,
+                            barThickness: 12,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: { usePointStyle: true, boxWidth: 8, font: { family: "'Poppins', sans-serif" } }
+                        }
+                    },
+                    scales: {
+                        x: { grid: { display: false } },
+                        y: { type: 'linear', display: true, position: 'left', grid: { borderDash: [5, 5], color: '#E2E8F0' } },
+                        y1: { type: 'linear', display: true, position: 'right', grid: { drawOnChartArea: false } }
+                    }
+                }
+            });
+        }
+    });
+</script>
+}

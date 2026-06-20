@@ -1,0 +1,179 @@
+@model RealtorsPortal.Models.ViewModels.Account.SignupViewModel
+@{
+    ViewData["Title"] = "Sign Up";
+}
+<!-- Signup Section -->
+    <main class="flex-grow flex items-center justify-center pt-32 pb-20 relative bg-deep">
+        <!-- Background Image -->
+        <div class="absolute inset-0 opacity-20">
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Signup Card -->
+        <div class="glass-panel p-8 md:p-12 rounded-3xl w-full max-w-2xl relative z-10 mx-6 border-t border-gray-300 shadow-[0_20px_50px_rgba(0,0,0,0.5)]" data-aos="zoom-in">
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-bold mb-2">Create an Account</h1>
+                <p class="text-[#4a5568] text-sm">Join our exclusive network of global luxury real estate</p>
+            </div>
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span asp-validation-summary="ModelOnly"></span>
+                </div>
+            }
+
+            <form id="signup-form" asp-action="Signup" asp-controller="Account" method="POST" novalidate>
+                @Html.AntiForgeryToken()
+                <!-- exclude from jQuery validate — value controlled by JS -->
+                <input asp-for="AccountType" type="hidden" id="account_type" class="validate-ignore">
+
+                <!-- Account Type Selector -->
+                <div class="mb-8">
+                    <label class="block text-xs font-bold text-[#4a5568] uppercase tracking-widest mb-4 text-center">I am registering as</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button type="button" id="type-seller" onclick="selectAccountType('seller')" class="account-type-btn py-4 rounded-xl border-2 border-gold bg-gold/10 text-gold flex flex-col items-center justify-center gap-2 transition-all">
+                            <i class="fas fa-home text-2xl"></i>
+                            <span class="text-sm font-bold">Private Seller</span>
+                        </button>
+                        <button type="button" id="type-agent" onclick="selectAccountType('agent')" class="account-type-btn py-4 rounded-xl border-2 border-gray-200 text-[#4a5568] hover:border-white/30 flex flex-col items-center justify-center gap-2 transition-all">
+                            <i class="fas fa-user-tie text-2xl"></i>
+                            <span class="text-sm font-bold">Real Estate Agent</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Full Name -->
+                    <div class="mb-2">
+                        <label asp-for="FullName" class="block text-xs font-bold text-[#4a5568] uppercase tracking-widest mb-3">Full Name</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="far fa-user text-gray-500"></i>
+                            </div>
+                            <input asp-for="FullName" type="text" placeholder="John Doe" class="signup-input w-full bg-white border border-gray-200 rounded-xl pl-12 pr-4 py-3 text-sm focus:border-navy outline-none placeholder-gray-400 transition-colors">
+                        </div>
+                        <span asp-validation-for="FullName" class="text-red-500 text-xs mt-1 block font-medium"></span>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="mb-2">
+                        <label asp-for="Phone" class="block text-xs font-bold text-[#4a5568] uppercase tracking-widest mb-3">Phone Number</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-phone-alt text-gray-500"></i>
+                            </div>
+                            <input asp-for="Phone" type="tel" placeholder="+1 234 567 890" class="signup-input w-full bg-white border border-gray-200 rounded-xl pl-12 pr-4 py-3 text-sm focus:border-navy outline-none placeholder-gray-400 transition-colors">
+                        </div>
+                        <span asp-validation-for="Phone" class="text-red-500 text-xs mt-1 block font-medium"></span>
+                    </div>
+                </div>
+
+                <!-- Email Field -->
+                <div class="mb-6">
+                    <label asp-for="Email" class="block text-xs font-bold text-[#4a5568] uppercase tracking-widest mb-3">Email Address</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="far fa-envelope text-gray-500"></i>
+                        </div>
+                        <input asp-for="Email" type="email" placeholder="john@example.com" class="signup-input w-full bg-white border border-gray-200 rounded-xl pl-12 pr-4 py-3 text-sm focus:border-navy outline-none placeholder-gray-400 transition-colors">
+                    </div>
+                    <span asp-validation-for="Email" class="text-red-500 text-xs mt-1 block font-medium"></span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Password Field -->
+                    <div class="mb-4">
+                        <label asp-for="Password" class="block text-xs font-bold text-[#4a5568] uppercase tracking-widest mb-3">Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-gray-500"></i>
+                            </div>
+                            <input asp-for="Password" type="password" placeholder="Min 8 chars + 1 digit" class="signup-input w-full bg-white border border-gray-200 rounded-xl pl-12 pr-4 py-3 text-sm focus:border-navy outline-none placeholder-gray-400 transition-colors">
+                        </div>
+                        <span asp-validation-for="Password" class="text-red-500 text-xs mt-1 block font-medium"></span>
+                        <p class="text-[#9aa3af] text-xs mt-1">At least 8 characters, must include a number</p>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="mb-4">
+                        <label asp-for="ConfirmPassword" class="block text-xs font-bold text-[#4a5568] uppercase tracking-widest mb-3">Confirm Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-gray-500"></i>
+                            </div>
+                            <input asp-for="ConfirmPassword" type="password" placeholder="Repeat your password" class="signup-input w-full bg-white border border-gray-200 rounded-xl pl-12 pr-4 py-3 text-sm focus:border-navy outline-none placeholder-gray-400 transition-colors">
+                        </div>
+                        <span asp-validation-for="ConfirmPassword" class="text-red-500 text-xs mt-1 block font-medium"></span>
+                    </div>
+                </div>
+
+                <!-- Signup Button -->
+                <button id="signup-btn" type="submit" class="w-full btn-gold !py-4 text-base font-bold shadow-[0_10px_30px_rgba(212,175,55,0.3)] hover:shadow-[0_10px_40px_rgba(212,175,55,0.5)] mt-4">
+                    <span id="btn-text">Create Account</span>
+                    <span id="btn-spinner" class="hidden ml-2"><i class="fas fa-spinner fa-spin"></i></span>
+                </button>
+            </form>
+
+            <div class="mt-8 text-center border-t border-gray-200 pt-8">
+                <p class="text-sm text-[#4a5568]">Already have an account? <a asp-controller="Account" asp-action="Login" class="text-gold font-bold hover:text-white transition-colors ml-1 border-b border-gold pb-0.5">Sign In</a></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function selectAccountType(type) {
+            document.querySelectorAll('.account-type-btn').forEach(btn => {
+                btn.classList.remove('border-gold', 'bg-gold/10', 'text-gold');
+                btn.classList.add('border-gray-200', 'text-[#4a5568]');
+            });
+
+            const selectedBtn = document.getElementById('type-' + type);
+            if (selectedBtn) {
+                selectedBtn.classList.remove('border-gray-200', 'text-[#4a5568]');
+                selectedBtn.classList.add('border-gold', 'bg-gold/10', 'text-gold');
+            }
+
+            document.getElementById('account_type').value = type.charAt(0).toUpperCase() + type.slice(1);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Restore account type button state on re-render after validation error
+            const val = document.getElementById('account_type').value;
+            if (val) selectAccountType(val.toLowerCase());
+
+            // Highlight invalid inputs with red border
+            $.validator.setDefaults({
+                highlight: function (element) {
+                    $(element).addClass('!border-red-400');
+                },
+                unhighlight: function (element) {
+                    $(element).removeClass('!border-red-400');
+                },
+                errorPlacement: function (error, element) {
+                    error.addClass('text-red-500 text-xs mt-1 font-medium');
+                    error.insertAfter(element.closest('.relative') || element);
+                }
+            });
+
+            // Show spinner and disable button on valid submit
+            const form = document.getElementById('signup-form');
+            const btn  = document.getElementById('signup-btn');
+            const txt  = document.getElementById('btn-text');
+            const spin = document.getElementById('btn-spinner');
+
+            form.addEventListener('submit', function () {
+                if ($(form).valid()) {
+                    btn.disabled = true;
+                    txt.textContent = 'Creating Account…';
+                    spin.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+}

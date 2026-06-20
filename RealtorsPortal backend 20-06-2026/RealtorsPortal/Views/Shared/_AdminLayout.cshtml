@@ -1,0 +1,99 @@
+@{
+    var currentPath = Context.Request.Path.Value?.ToLower() ?? "";
+    bool isListings = currentPath.Contains("/admin/listings");
+    bool isDash     = currentPath == "/admin/dashboard" || currentPath == "/admin/";
+    bool isUsers    = currentPath.Contains("/admin/users") || currentPath.Contains("/admin/toggleuser") || currentPath.Contains("/admin/deleteuser");
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] — EstateHub Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        .nav-link { display:flex; align-items:center; gap:12px; padding:10px 16px; border-radius:12px; font-size:.875rem; font-weight:500; color:#9ca3af; transition:background .15s,color .15s; text-decoration:none; }
+        .nav-link:hover { background:rgba(255,255,255,.10); color:#fff; }
+        .nav-link.active { background:rgba(255,255,255,.15); color:#fff; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex">
+
+    <!-- Sidebar -->
+    <aside class="w-64 min-h-screen bg-[#0F2040] flex flex-col flex-shrink-0 fixed top-0 left-0 z-30">
+        <!-- Logo -->
+        <div class="px-6 py-5 border-b border-white/10">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-yellow-400 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-building text-[#0F2040] text-sm"></i>
+                </div>
+                <div>
+                    <p class="text-white font-bold text-sm leading-tight">EstateHub</p>
+                    <p class="text-gray-400 text-xs">Admin Panel</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nav -->
+        <nav class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+            <p class="text-gray-600 text-xs font-semibold uppercase tracking-widest px-3 mb-2">Main</p>
+
+            <a href="/Admin/Dashboard" class="nav-link @(isDash ? "active" : "")">
+                <i class="fas fa-gauge-high w-4 text-center"></i> Dashboard
+            </a>
+
+            <p class="text-gray-600 text-xs font-semibold uppercase tracking-widest px-3 mt-4 mb-2">Manage</p>
+
+            <a href="/Admin/Users" class="nav-link @(isUsers ? "active" : "")">
+                <i class="fas fa-users w-4 text-center"></i> Users
+            </a>
+
+            <a href="/Admin/Listings?status=Pending" class="nav-link @(isListings ? "active" : "")">
+                <i class="fas fa-house w-4 text-center"></i> Listings
+                @{
+                    var pendingCount = ViewBag.PendingBadge as int?;
+                }
+                @if (pendingCount > 0)
+                {
+                    <span class="ml-auto bg-yellow-400 text-[#0F2040] text-xs font-bold px-2 py-0.5 rounded-full">@pendingCount</span>
+                }
+            </a>
+
+        </nav>
+
+        <!-- Bottom: logout -->
+        <div class="px-3 py-4 border-t border-white/10">
+            <div class="px-3 py-2 mb-2">
+                <p class="text-white text-sm font-medium">Administrator</p>
+                <p class="text-gray-400 text-xs truncate">@User.Identity?.Name</p>
+            </div>
+            <form asp-controller="Account" asp-action="Logout" method="post">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="nav-link w-full text-left text-red-400 hover:text-red-300 hover:bg-red-500/10">
+                    <i class="fas fa-right-from-bracket w-4 text-center"></i> Logout
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    <!-- Main content -->
+    <div class="flex-1 ml-64 flex flex-col min-h-screen">
+
+        <!-- Top bar -->
+        <header class="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between sticky top-0 z-20">
+            <h1 class="text-base font-bold text-gray-800">@(ViewData["Title"] ?? "Admin")</h1>
+            <div class="flex items-center gap-3 text-sm text-gray-500">
+                <i class="fas fa-circle text-green-400 text-xs"></i> Online
+            </div>
+        </header>
+
+        <!-- Page content -->
+        <main class="flex-1 p-6">
+            @RenderBody()
+        </main>
+    </div>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

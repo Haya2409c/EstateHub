@@ -1,0 +1,268 @@
+@using RealtorsPortal.Models.Entities
+@inject Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> UserManager
+@{
+    Layout = "_SellerLayout";
+    ViewData["Title"] = "Profile Settings";
+    ViewData["PageHeading"] = "Profile Settings";
+    var currentUser = await UserManager.GetUserAsync(User);
+    var fullName = currentUser?.FullName ?? User.Identity?.Name ?? "Seller";
+    var email = currentUser?.Email ?? "";
+    var phone = currentUser?.PhoneNumber ?? "";
+    var memberSince = currentUser?.CreatedAt.ToString("MMMM yyyy") ?? "—";
+}
+
+<main class="flex-1 p-6 max-w-6xl mx-auto w-full">
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="mb-4 p-3 bg-green-100 text-green-700 rounded-lg font-poppins text-sm">@TempData["Success"]</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="mb-4 p-3 bg-red-100 text-red-700 rounded-lg font-poppins text-sm">@TempData["Error"]</div>
+    }
+
+    <form asp-controller="Seller" asp-action="UpdateProfile" method="post">
+        <div class="flex flex-col lg:flex-row gap-8">
+
+            <!-- Left Column -->
+            <div class="w-full lg:w-1/3 space-y-6">
+                <div class="glass-panel p-8 text-center sticky top-24">
+                    <div class="relative w-[150px] h-[150px] mx-auto mb-6">
+                        <img src="https://ui-avatars.com/api/?name=@Uri.EscapeDataString(fullName)&background=1E3A5F&color=fff&size=150"
+                             id="profileAvatar" alt="Avatar" class="w-full h-full rounded-full border-4 border-white shadow-md object-cover">
+                    </div>
+                    <h2 class="font-outfit font-bold text-2xl text-[#1E3A5F] mb-1 display-user-name">@fullName</h2>
+                    <p class="font-poppins text-[#718096] mb-4">@email</p>
+                    <div class="inline-flex items-center justify-center gap-2 px-3 py-1.5 bg-[#dcfce7] text-[#16a34a] rounded-lg text-sm font-medium border border-[#bbf7d0] mb-6">
+                        <i class="fa-solid fa-shield-check"></i> Verified Seller
+                    </div>
+                    <div class="border-t border-[#1E3A5F]/10 pt-6 space-y-3 text-left">
+                        <div class="flex justify-between items-center text-sm font-poppins">
+                            <span class="text-[#718096]">Member Since</span>
+                            <span class="font-semibold text-[#1E3A5F]">@memberSince</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm font-poppins">
+                            <span class="text-[#718096]">Account Type</span>
+                            <span class="font-semibold text-[#1E3A5F]">Seller</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Form Sections -->
+            <div class="w-full lg:w-2/3 space-y-6">
+
+                <!-- Personal Information -->
+                <div class="glass-panel p-6 sm:p-8">
+                    <h2 class="section-heading">Personal Information</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label>Full Name <span class="required">*</span></label>
+                            <input type="text" id="fullNameInput" name="FullName" value="@fullName" required>
+                        </div>
+                        <div>
+                            <label>Email</label>
+                            <div class="relative">
+                                <input type="email" value="@email" class="bg-gray-100 cursor-not-allowed pr-10" readonly style="background-color:#f3f4f6;">
+                                <i class="fa-solid fa-circle-check text-green-500 absolute right-4 top-1/2 -translate-y-1/2" title="Verified"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <label>Phone Number</label>
+                            <input type="tel" id="phoneInput" name="Phone" value="@phone" placeholder="Enter your phone number">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label>Address (Optional)</label>
+                            <input type="text" placeholder="Enter your full address">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Picture Upload Section -->
+                <div class="glass-panel p-6 sm:p-8">
+                    <h2 class="section-heading">Profile Picture</h2>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                        <div class="relative w-24 h-24 rounded-full overflow-hidden border-4 border-[#F4F6F9] shadow-sm flex-shrink-0 group">
+                            <img src="https://ui-avatars.com/api/?name=@Uri.EscapeDataString(fullName)&background=1E3A5F&color=fff&size=150"
+                                 id="previewImage" alt="Current Avatar" class="w-full h-full object-cover">
+                            <div id="removeImageBtn" class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity cursor-pointer text-white hidden" onclick="removeAvatar()">
+                                <i class="fa-solid fa-trash text-lg"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1 w-full border-2 border-dashed border-[#1E3A5F]/30 hover:border-[#2563EB] bg-[#F4F6F9]/50 rounded-xl p-4 sm:p-6 text-center transition-colors cursor-pointer"
+                             id="dropArea" onclick="document.getElementById('avatarInput').click()">
+                            <div class="text-[#2563EB] text-xl mb-2"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                            <p class="font-poppins text-sm text-[#1E3A5F] font-medium mb-1">Click to upload or drag and drop</p>
+                            <p class="text-xs text-[#718096]">SVG, PNG, JPG or GIF (max. 800x800px)</p>
+                            <input type="file" id="avatarInput" class="hidden" accept="image/*" onchange="handleImageUpload(this)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Change Password -->
+                <div class="glass-panel p-6 sm:p-8">
+                    <h2 class="section-heading">Change Password</h2>
+                    <div class="space-y-4">
+                        <div class="relative">
+                            <label>Current Password</label>
+                            <input type="password" id="currentPassword" name="CurrentPassword" placeholder="Enter current password">
+                            <button type="button" class="absolute right-4 top-[38px] text-[#718096] hover:text-[#1E3A5F]" onclick="togglePassword('currentPassword', this)" title="Toggle password visibility" aria-label="Toggle password visibility"><i class="fa-regular fa-eye"></i></button>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="relative">
+                                <label>New Password</label>
+                                <input type="password" id="newPassword" name="NewPassword" placeholder="Enter new password" onkeyup="checkPasswordMatch()">
+                                <button type="button" class="absolute right-4 top-[38px] text-[#718096] hover:text-[#1E3A5F]" onclick="togglePassword('newPassword', this)" title="Toggle password visibility" aria-label="Toggle password visibility"><i class="fa-regular fa-eye"></i></button>
+                                <div class="mt-2 flex gap-1 h-1" id="strengthBar">
+                                    <div class="flex-1 bg-gray-200 rounded-full"></div>
+                                    <div class="flex-1 bg-gray-200 rounded-full"></div>
+                                    <div class="flex-1 bg-gray-200 rounded-full"></div>
+                                </div>
+                                <p class="text-xs text-[#718096] mt-1" id="strengthText">Must be at least 8 characters</p>
+                            </div>
+                            <div class="relative">
+                                <label>Confirm Password</label>
+                                <input type="password" id="confirmPassword" name="ConfirmPassword" placeholder="Confirm new password" onkeyup="checkPasswordMatch()">
+                                <button type="button" class="absolute right-4 top-[38px] text-[#718096] hover:text-[#1E3A5F]" onclick="togglePassword('confirmPassword', this)" title="Toggle password visibility" aria-label="Toggle password visibility"><i class="fa-regular fa-eye"></i></button>
+                                <p class="text-xs text-red-500 mt-1 hidden" id="matchError">Passwords do not match</p>
+                                <p class="text-xs text-green-500 mt-1 hidden" id="matchSuccess">Passwords match</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Action Buttons Bottom Bar -->
+        @Html.AntiForgeryToken()
+        <div class="fixed bottom-0 left-0 right-0 lg:static bg-white/95 backdrop-blur-md lg:bg-transparent p-4 lg:p-0 lg:mt-8 border-t lg:border-none border-[#1E3A5F]/10 z-20 flex justify-end gap-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] lg:shadow-none">
+            <button type="reset" class="btn-outline-navy w-auto" style="color:#ef4444;border-color:#fecaca;">Reset</button>
+            <button type="submit" class="btn-gold w-auto">Save Profile <i class="fa-solid fa-check ml-2"></i></button>
+        </div>
+    </form>
+</main>
+
+@section Scripts {
+<script>
+    function handleImageUpload(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const result = e.target.result;
+                const profileAvatar = document.getElementById('profileAvatar');
+                const previewImage = document.getElementById('previewImage');
+                const headerAvatar = document.getElementById('headerAvatar');
+                if (profileAvatar) profileAvatar.src = result;
+                if (previewImage) previewImage.src = result;
+                if (headerAvatar) headerAvatar.src = result;
+                document.getElementById('removeImageBtn').classList.remove('hidden');
+                if (typeof showToast === 'function') showToast('Image saved successfully!', 'success');
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function removeAvatar() {
+        const defaultUrl = `https://ui-avatars.com/api/?name=@Uri.EscapeDataString(fullName)&background=1E3A5F&color=fff&size=150`;
+        const profileAvatar = document.getElementById('profileAvatar');
+        const previewImage = document.getElementById('previewImage');
+        const headerAvatar = document.getElementById('headerAvatar');
+        if (profileAvatar) profileAvatar.src = defaultUrl;
+        if (previewImage) previewImage.src = defaultUrl;
+        if (headerAvatar) headerAvatar.src = defaultUrl;
+        document.getElementById('removeImageBtn').classList.add('hidden');
+        document.getElementById('avatarInput').value = '';
+        if (typeof showToast === 'function') showToast('Image removed.', 'success');
+    }
+
+    function togglePassword(inputId, btn) {
+        const input = document.getElementById(inputId);
+        const icon = btn.querySelector('i');
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    }
+
+    function checkPasswordMatch() {
+        const newPass = document.getElementById('newPassword').value;
+        const confirmPass = document.getElementById('confirmPassword').value;
+        const matchError = document.getElementById('matchError');
+        const matchSuccess = document.getElementById('matchSuccess');
+        const strengthBar = document.getElementById('strengthBar');
+        const strengthText = document.getElementById('strengthText');
+        const bars = strengthBar.children;
+
+        if (newPass.length === 0) {
+            bars[0].className = 'flex-1 bg-gray-200 rounded-full';
+            bars[1].className = 'flex-1 bg-gray-200 rounded-full';
+            bars[2].className = 'flex-1 bg-gray-200 rounded-full';
+            strengthText.innerText = 'Must be at least 8 characters';
+            strengthText.className = 'text-xs text-[#718096] mt-1';
+        } else if (newPass.length < 6) {
+            bars[0].className = 'flex-1 bg-red-400 rounded-full';
+            bars[1].className = 'flex-1 bg-gray-200 rounded-full';
+            bars[2].className = 'flex-1 bg-gray-200 rounded-full';
+            strengthText.innerText = 'Weak password';
+            strengthText.className = 'text-xs text-red-500 mt-1';
+        } else if (newPass.length < 10) {
+            bars[0].className = 'flex-1 bg-yellow-400 rounded-full';
+            bars[1].className = 'flex-1 bg-yellow-400 rounded-full';
+            bars[2].className = 'flex-1 bg-gray-200 rounded-full';
+            strengthText.innerText = 'Good password';
+            strengthText.className = 'text-xs text-yellow-500 mt-1';
+        } else {
+            bars[0].className = 'flex-1 bg-green-500 rounded-full';
+            bars[1].className = 'flex-1 bg-green-500 rounded-full';
+            bars[2].className = 'flex-1 bg-green-500 rounded-full';
+            strengthText.innerText = 'Strong password';
+            strengthText.className = 'text-xs text-green-500 mt-1';
+        }
+
+        if (confirmPass.length > 0) {
+            if (newPass === confirmPass) {
+                document.getElementById('confirmPassword').classList.remove('border-red-500');
+                document.getElementById('confirmPassword').classList.add('border-green-500');
+                matchError.classList.add('hidden');
+                matchSuccess.classList.remove('hidden');
+            } else {
+                document.getElementById('confirmPassword').classList.remove('border-green-500');
+                document.getElementById('confirmPassword').classList.add('border-red-500');
+                matchSuccess.classList.add('hidden');
+                matchError.classList.remove('hidden');
+            }
+        } else {
+            document.getElementById('confirmPassword').classList.remove('border-red-500', 'border-green-500');
+            matchError.classList.add('hidden');
+            matchSuccess.classList.add('hidden');
+        }
+    }
+
+    function handleProfileSubmit(e) {
+        e.preventDefault();
+        const newPass = document.getElementById('newPassword').value;
+        const confirmPass = document.getElementById('confirmPassword').value;
+        if (newPass && newPass !== confirmPass) {
+            if (typeof showToast === 'function') showToast('Passwords do not match.', 'error');
+            return;
+        }
+        if (typeof showToast === 'function') showToast('Profile updated successfully!', 'success');
+    }
+
+    const dropArea = document.getElementById('dropArea');
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(evt => {
+        dropArea.addEventListener(evt, e => { e.preventDefault(); e.stopPropagation(); }, false);
+    });
+    dropArea.addEventListener('dragover', () => dropArea.classList.add('border-[#2563EB]'));
+    dropArea.addEventListener('dragleave', () => dropArea.classList.remove('border-[#2563EB]'));
+    dropArea.addEventListener('drop', e => {
+        dropArea.classList.remove('border-[#2563EB]');
+        if (e.dataTransfer.files.length) handleImageUpload({ files: e.dataTransfer.files });
+    });
+</script>
+}

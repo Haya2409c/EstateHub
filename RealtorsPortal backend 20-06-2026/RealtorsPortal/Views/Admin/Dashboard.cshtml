@@ -1,0 +1,69 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "_AdminLayout";
+}
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+    <div class="bg-white rounded-2xl border border-gray-200 p-6 flex items-center gap-4 shadow-sm">
+        <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
+            <i class="fas fa-clock text-yellow-600 text-lg"></i>
+        </div>
+        <div>
+            <p class="text-2xl font-bold text-gray-800">@(ViewBag.PendingCount ?? 0)</p>
+            <p class="text-sm text-gray-500">Pending Listings</p>
+        </div>
+    </div>
+    <div class="bg-white rounded-2xl border border-gray-200 p-6 flex items-center gap-4 shadow-sm">
+        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+            <i class="fas fa-house-circle-check text-green-600 text-lg"></i>
+        </div>
+        <div>
+            <p class="text-2xl font-bold text-gray-800">@(ViewBag.ActiveCount ?? 0)</p>
+            <p class="text-sm text-gray-500">Active Listings</p>
+        </div>
+    </div>
+    <div class="bg-white rounded-2xl border border-gray-200 p-6 flex items-center gap-4 shadow-sm">
+        <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center">
+            <i class="fas fa-newspaper text-indigo-600 text-lg"></i>
+        </div>
+        <div>
+            <p class="text-2xl font-bold text-gray-800">@(ViewBag.NewsCount ?? 0)</p>
+            <p class="text-sm text-gray-500">News Articles</p>
+        </div>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <a href="/Admin/Listings?status=Pending"
+       class="bg-white rounded-2xl border border-gray-200 p-6 hover:border-blue-300 hover:shadow-md transition-all group shadow-sm">
+        <div class="flex items-center gap-4 mb-3">
+            <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-600 transition-colors">
+                <i class="fas fa-house text-blue-600 group-hover:text-white transition-colors"></i>
+            </div>
+            <h3 class="font-bold text-gray-800">Manage Listings</h3>
+        </div>
+        <p class="text-sm text-gray-500">Review pending properties and approve or reject them.</p>
+    </a>
+
+    <a href="/Admin/NewsArticles"
+       class="bg-white rounded-2xl border border-gray-200 p-6 hover:border-indigo-300 hover:shadow-md transition-all group shadow-sm">
+        <div class="flex items-center gap-4 mb-3">
+            <div class="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center group-hover:bg-indigo-600 transition-colors">
+                <i class="fas fa-newspaper text-indigo-600 group-hover:text-white transition-colors"></i>
+            </div>
+            <h3 class="font-bold text-gray-800">News Articles</h3>
+        </div>
+        <p class="text-sm text-gray-500">Write, edit and publish news articles for the website.</p>
+    </a>
+
+    <a href="/admin"
+       class="bg-white rounded-2xl border border-gray-200 p-6 hover:border-gray-400 hover:shadow-md transition-all group shadow-sm">
+        <div class="flex items-center gap-4 mb-3">
+            <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center group-hover:bg-gray-800 transition-colors">
+                <i class="fas fa-sliders text-gray-600 group-hover:text-white transition-colors"></i>
+            </div>
+            <h3 class="font-bold text-gray-800">Full Admin Panel</h3>
+        </div>
+        <p class="text-sm text-gray-500">Open the complete admin panel with all settings.</p>
+    </a>
+</div>

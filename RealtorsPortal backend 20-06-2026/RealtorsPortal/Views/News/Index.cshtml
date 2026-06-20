@@ -1,0 +1,121 @@
+@model RealtorsPortal.Models.ViewModels.News.NewsListViewModel
+@{
+    ViewData["Title"] = "News";
+    var recent = ViewBag.RecentArticles as List<RealtorsPortal.Models.ViewModels.News.NewsArticleCardViewModel> ?? new();
+}
+
+<!-- Header -->
+<section class="pt-32 pb-20 bg-deep border-b border-gray-200 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[#1E3A5F]/40"></div>
+    <div class="container mx-auto px-6 text-center relative z-10">
+        <span class="text-gold uppercase tracking-[0.3em] text-sm font-semibold mb-4 block" data-aos="fade-up">Luxury Insights</span>
+        <h1 class="text-white text-5xl md:text-6xl font-bold mb-6" data-aos="fade-up" data-aos-delay="100">Market <span class="text-gold italic font-normal">Trends & Lifestyle</span></h1>
+        <p class="max-w-2xl mx-auto text-white/85" data-aos="fade-up" data-aos-delay="200">Expert analysis, investment guides, and a glimpse into the world's most exclusive lifestyles.</p>
+    </div>
+</section>
+
+<!-- Blog Content -->
+<section class="py-20 container mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+        <!-- Main Feed -->
+        <div class="lg:col-span-2 space-y-12">
+            @if (!Model.Articles.Any())
+            {
+                <div class="glass-panel rounded-3xl p-16 text-center text-gray-500">
+                    <i class="fas fa-newspaper text-5xl mb-4 opacity-30"></i>
+                    <p>No articles published yet. Check back soon.</p>
+                </div>
+            }
+            else
+            {
+                @foreach (var article in Model.Articles)
+                {
+                    var thumb = article.ThumbnailUrl ?? "https://images.unsplash.com/photo-1560184897-ae75f418493e?auto=format&fit=crop&w=600&q=80";
+                    <article class="blog-card group" data-aos="fade-up">
+                        <div class="h-80 overflow-hidden">
+                            <img src="@thumb" alt="@article.Title"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                 onerror="this.src='https://images.unsplash.com/photo-1560184897-ae75f418493e?auto=format&fit=crop&w=600&q=80'">
+                        </div>
+                        <div class="p-10">
+                            <div class="flex items-center gap-4 mb-6">
+                                @if (!string.IsNullOrEmpty(article.Author))
+                                {
+                                    <span class="px-4 py-1 bg-gold/10 text-gold text-xs font-bold uppercase tracking-widest rounded-full">@article.Author</span>
+                                }
+                                <span class="text-xs text-gray-500 font-bold uppercase tracking-widest">@article.PublishedAt.ToString("MMM dd, yyyy")</span>
+                            </div>
+                            <h2 class="text-2xl font-bold mb-4 hover:text-gold transition-colors">@article.Title</h2>
+                            @if (!string.IsNullOrEmpty(article.Summary))
+                            {
+                                <p class="text-[#4a5568] text-base leading-relaxed mb-6">@article.Summary</p>
+                            }
+                            <a asp-controller="News" asp-action="Details" asp-route-id="@article.Id"
+                               class="text-gold font-bold border-b border-gold pb-1 hover:text-[#2D4A8A] hover:border-[#2D4A8A] transition-all">
+                                Continue Reading
+                            </a>
+                        </div>
+                    </article>
+                }
+            }
+
+            <!-- Pagination -->
+            @if (Model.Pagination.TotalPages > 1)
+            {
+                <div class="flex items-center justify-center gap-2 pt-8">
+                    @for (int i = 1; i <= Model.Pagination.TotalPages; i++)
+                    {
+                        var isActive = i == Model.Pagination.CurrentPage;
+                        <a href="@Url.Action("Index", "News", new { page = i })"
+                           class="w-10 h-10 flex items-center justify-center rounded-xl text-sm font-semibold transition-colors
+                                  @(isActive ? "bg-gold text-white" : "bg-white border border-gray-200 text-gray-600 hover:border-gold hover:text-gold")">
+                            @i
+                        </a>
+                    }
+                </div>
+            }
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="space-y-12">
+            @if (recent.Any())
+            {
+                <div class="glass-panel p-8 rounded-3xl">
+                    <h3 class="text-xl font-bold mb-6 border-b border-gray-200 pb-4">Recent Posts</h3>
+                    <div class="space-y-6">
+                        @foreach (var r in recent)
+                        {
+                            var rThumb = r.ThumbnailUrl ?? "https://images.unsplash.com/photo-1560184897-ae75f418493e?auto=format&fit=crop&w=200&q=80";
+                            <a asp-controller="News" asp-action="Details" asp-route-id="@r.Id"
+                               class="flex gap-4 group cursor-pointer">
+                                <img src="@rThumb" alt="@r.Title"
+                                     class="w-20 h-16 rounded-xl object-cover flex-shrink-0"
+                                     onerror="this.src='https://images.unsplash.com/photo-1560184897-ae75f418493e?auto=format&fit=crop&w=200&q=80'">
+                                <div>
+                                    <h4 class="font-bold text-sm group-hover:text-gold transition-colors line-clamp-2">@r.Title</h4>
+                                    <p class="text-xs text-gray-500 mt-1">@r.PublishedAt.ToString("MMM dd, yyyy")</p>
+                                </div>
+                            </a>
+                        }
+                    </div>
+                </div>
+            }
+
+            <div class="glass-panel p-8 rounded-3xl">
+                <h3 class="text-xl font-bold mb-6 border-b border-gray-200 pb-4">Total Articles</h3>
+                <p class="text-3xl font-bold text-gold">@Model.Pagination.TotalItems</p>
+                <p class="text-sm text-gray-500 mt-1">Published articles</p>
+            </div>
+        </aside>
+    </div>
+</section>
+
+<!-- Footer -->
+
+@section Scripts {
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 0 });
+        window.addEventListener('load', function() { AOS.refresh(); });
+    </script>
+}

@@ -1,0 +1,226 @@
+@{
+    Layout = "_SellerLayout";
+    ViewData["Title"] = "Property Media";
+    ViewData["PageHeading"] = "Property Media";
+    var properties = ViewBag.Properties as List<RealtorsPortal.Models.Entities.Property> ?? new();
+    var selectedId = ViewBag.SelectedId as int?;
+    var selectedProp = ViewBag.SelectedProperty as RealtorsPortal.Models.Entities.Property;
+    var existingImages = ViewBag.ExistingImages as List<RealtorsPortal.Models.Entities.PropertyImage> ?? new();
+}
+
+<main class="flex-1 p-6 max-w-7xl mx-auto w-full">
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="mb-4 p-3 bg-green-100 text-green-700 rounded-lg font-poppins text-sm">@TempData["Success"]</div>
+    }
+
+    <!-- Page Header -->
+    <div class="mb-8" data-aos="fade-down">
+        <nav class="flex items-center gap-2 text-sm font-poppins text-[#718096] mb-3">
+            <a asp-controller="Seller" asp-action="Index" class="hover:text-[#2563EB] transition-colors">Dashboard</a>
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+            <a asp-controller="Seller" asp-action="MyListings" class="hover:text-[#2563EB] transition-colors">Properties</a>
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+            <span class="text-[#1E3A5F] font-medium">Property Images</span>
+        </nav>
+        <h1 class="font-outfit font-bold text-3xl text-[#1E3A5F] mb-2">Property Images Management</h1>
+        <p class="font-poppins text-[#718096]">Upload and manage images for your property listings.</p>
+    </div>
+
+    <!-- Property Selection & Stats -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8 items-stretch">
+        <!-- Property Selector -->
+        <div class="glass-panel p-4 lg:col-span-4 flex flex-col justify-between" data-aos="fade-right">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="font-outfit font-semibold text-sm text-[#718096] uppercase tracking-wide m-0">Select Property</h2>
+            </div>
+            <form method="get" asp-controller="Seller" asp-action="UploadImages">
+                <div class="relative mb-3">
+                    <select name="listingId" onchange="this.form.submit()"
+                            class="w-full bg-[#F4F6F9] border border-[#1E3A5F]/10 rounded-lg px-3 py-2 text-sm font-poppins text-[#1E3A5F] appearance-none focus:outline-none focus:border-[#2563EB] transition-all cursor-pointer">
+                        <option value="">Select a property...</option>
+                        @foreach (var p in properties)
+                        {
+                            <option value="@p.Id" selected="@(selectedId == p.Id)">@p.Title</option>
+                        }
+                    </select>
+                    <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-[#718096] text-xs pointer-events-none"></i>
+                </div>
+            </form>
+            <div class="bg-gradient-to-br from-[#1E3A5F] to-[#2D4A8A] rounded-lg p-3 text-white shadow relative overflow-hidden mt-auto">
+                <div class="flex items-center gap-3 relative z-10">
+                    <div class="w-12 h-12 rounded bg-white/20 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-house text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-outfit font-bold text-sm leading-tight mb-1">
+                            @(selectedProp?.Title ?? "No property selected")
+                        </h3>
+                        <div class="text-xs text-white/70">@(selectedProp != null ? $"{existingImages.Count} image(s)" : "Select a property above")</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Statistics -->
+        <div class="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-4" data-aos="fade-left">
+            <div class="glass-panel p-4 flex flex-col items-center justify-center text-center">
+                <div class="w-10 h-10 rounded-full bg-[#F4F6F9] text-[#2563EB] flex items-center justify-center mb-2 shadow-sm">
+                    <i class="fa-regular fa-images text-lg"></i>
+                </div>
+                <div class="font-outfit font-bold text-2xl text-[#1E3A5F] leading-none mb-1">@existingImages.Count</div>
+                <div class="text-[#718096] text-[10px] font-poppins uppercase tracking-wider font-medium">Total Images</div>
+            </div>
+            <div class="glass-panel p-4 flex flex-col items-center justify-center text-center">
+                <div class="w-10 h-10 rounded-full bg-[#F4F6F9] text-[#D4AF37] flex items-center justify-center mb-2 shadow-sm">
+                    <i class="fa-solid fa-star text-lg"></i>
+                </div>
+                <div class="font-outfit font-bold text-2xl text-[#1E3A5F] leading-none mb-1">@existingImages.Count(i => i.IsPrimary)</div>
+                <div class="text-[#718096] text-[10px] font-poppins uppercase tracking-wider font-medium">Featured</div>
+            </div>
+            <div class="glass-panel p-4 flex flex-col items-center justify-center text-center">
+                <div class="w-10 h-10 rounded-full bg-[#F4F6F9] text-green-500 flex items-center justify-center mb-2 shadow-sm">
+                    <i class="fa-solid fa-house text-lg"></i>
+                </div>
+                <div class="font-outfit font-bold text-2xl text-[#1E3A5F] leading-none mb-1">@properties.Count</div>
+                <div class="text-[#718096] text-[10px] font-poppins uppercase tracking-wider font-medium">Properties</div>
+            </div>
+            <div class="glass-panel p-4 flex flex-col items-center justify-center text-center">
+                <div class="w-10 h-10 rounded-full bg-[#F4F6F9] text-purple-500 flex items-center justify-center mb-2 shadow-sm">
+                    <i class="fa-solid fa-hard-drive text-lg"></i>
+                </div>
+                <div class="font-outfit font-bold text-2xl text-[#1E3A5F] leading-none mb-1">—</div>
+                <div class="text-[#718096] text-[10px] font-poppins uppercase tracking-wider font-medium">Storage</div>
+            </div>
+        </div>
+    </div>
+
+    @if (selectedProp != null)
+    {
+        <!-- Upload Form -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <div class="glass-panel p-6 lg:col-span-2" data-aos="fade-up">
+                <h2 class="section-heading flex items-center justify-between">
+                    Upload Images
+                    <span class="text-xs font-normal text-[#718096] bg-[#F4F6F9] px-2 py-1 rounded">JPG, PNG, WEBP</span>
+                </h2>
+                <form asp-controller="Seller" asp-action="UploadImagesConfirmed" method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="listingId" value="@selectedId">
+
+                    <div class="border-2 border-dashed border-[#1E3A5F]/20 hover:border-[#2563EB] bg-[#F8F7F4]/50 rounded-2xl p-10 flex flex-col items-center justify-center transition-all cursor-pointer group"
+                         onclick="document.getElementById('mediaFileInput').click()">
+                        <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-md mb-4 group-hover:-translate-y-2 transition-transform duration-300">
+                            <i class="fa-solid fa-cloud-arrow-up text-4xl text-[#2563EB]"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-xl text-[#1E3A5F] mb-2">Drag & Drop your images here</h3>
+                        <p class="font-poppins text-[#718096] mb-6 text-center">Upload multiple images at once.</p>
+                        <div class="flex gap-3">
+                            <button class="btn-gold" type="button" onclick="event.stopPropagation(); document.getElementById('mediaFileInput').click();">Browse Files</button>
+                            <button type="submit" id="uploadBtn" class="btn-outline-navy hidden" onclick="event.stopPropagation()">Upload Selected</button>
+                        </div>
+                        <input type="file" id="mediaFileInput" name="Images" class="hidden" multiple accept="image/*">
+                    </div>
+                    <div id="selectedPreview" class="flex flex-wrap gap-3 mt-4"></div>
+                </form>
+            </div>
+
+            <!-- Tips -->
+            <div class="glass-panel p-6 bg-gradient-to-br from-[#1E3A5F] to-[#112240] text-white" data-aos="fade-left">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-full bg-[#D4AF37]/20 flex items-center justify-center">
+                        <i class="fa-solid fa-lightbulb text-[#D4AF37] text-xl"></i>
+                    </div>
+                    <h2 class="font-outfit font-bold text-xl m-0 text-white">Optimization Tips</h2>
+                </div>
+                <ul class="space-y-4 font-poppins text-sm text-white/90">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-green-400 mt-0.5"></i><div><strong>High-quality images</strong> attract more buyers.</div></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-green-400 mt-0.5"></i><div><strong>Show everything:</strong> exterior + all key rooms.</div></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-green-400 mt-0.5"></i><div><strong>5+ photos</strong> get 40% more inquiries.</div></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-green-400 mt-0.5"></i><div><strong>Landscape orientation</strong> looks best on all screens.</div></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Existing Image Gallery -->
+        <div class="glass-panel p-6 mb-8" data-aos="fade-up">
+            <h2 class="font-outfit font-bold text-2xl text-[#1E3A5F] mb-6 border-b border-[#1E3A5F]/10 pb-4">
+                Image Gallery — @selectedProp.Title
+            </h2>
+            @if (!existingImages.Any())
+            {
+                <div class="flex flex-col items-center justify-center py-16 text-center">
+                    <i class="fa-regular fa-images text-6xl text-[#CBD5E0] mb-4"></i>
+                    <h3 class="font-outfit font-bold text-xl text-[#1E3A5F] mb-2">No Images Yet</h3>
+                    <p class="font-poppins text-[#718096]">Upload images above to attract more buyers.</p>
+                </div>
+            }
+            else
+            {
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    @foreach (var img in existingImages)
+                    {
+                        <div class="relative group rounded-xl overflow-hidden aspect-square shadow-sm">
+                            <img src="@img.Url" class="w-full h-full object-cover">
+                            @if (img.IsPrimary)
+                            {
+                                <span class="absolute top-2 left-2 bg-[#D4AF37] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Primary</span>
+                            }
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                                <form asp-controller="Seller" asp-action="DeleteImage" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="imageId" value="@img.Id">
+                                    <input type="hidden" name="listingId" value="@selectedId">
+                                    <button type="submit" class="w-10 h-10 rounded-full bg-red-500 hover:bg-red-600 text-white flex items-center justify-center transition-colors" title="Delete">
+                                        <i class="fa-solid fa-trash text-sm"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+    else if (!properties.Any())
+    {
+        <div class="glass-panel p-12 flex flex-col items-center justify-center text-center">
+            <i class="fa-solid fa-house-chimney text-6xl text-[#CBD5E0] mb-4"></i>
+            <h3 class="font-outfit font-bold text-2xl text-[#1E3A5F] mb-2">No Properties Yet</h3>
+            <p class="font-poppins text-[#718096] mb-6">Add a property first, then upload images for it.</p>
+            <a asp-controller="Seller" asp-action="CreateListing" class="btn-gold px-8 py-3">
+                <i class="fa-solid fa-plus"></i> Add Property
+            </a>
+        </div>
+    }
+
+</main>
+
+@section Scripts {
+<script>
+    AOS.init({ duration: 800, once: true, offset: 50 });
+
+    document.getElementById('mediaFileInput')?.addEventListener('change', function() {
+        const preview = document.getElementById('selectedPreview');
+        const uploadBtn = document.getElementById('uploadBtn');
+        preview.innerHTML = '';
+        if (this.files && this.files.length > 0) {
+            uploadBtn.classList.remove('hidden');
+            showToast(`${this.files.length} image(s) selected. Click Upload.`, 'success');
+            Array.from(this.files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    const div = document.createElement('div');
+                    div.className = 'w-20 h-20 rounded-lg overflow-hidden flex-shrink-0';
+                    div.innerHTML = `<img src="${e.target.result}" class="w-full h-full object-cover">`;
+                    preview.appendChild(div);
+                };
+                reader.readAsDataURL(file);
+            });
+        } else {
+            uploadBtn.classList.add('hidden');
+        }
+    });
+</script>
+}

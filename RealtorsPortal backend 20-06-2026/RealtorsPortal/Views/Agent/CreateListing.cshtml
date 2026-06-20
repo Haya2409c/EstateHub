@@ -1,0 +1,176 @@
+@model RealtorsPortal.Models.ViewModels.CreateListingViewModel
+@{
+    Layout = "_AgentLayout";
+    ViewData["Title"] = "Add Property";
+    ViewData["PageHeading"] = "Add New Property";
+}
+
+<main class="p-6 lg:p-8 max-w-4xl">
+
+    <form asp-controller="Agent" asp-action="CreateListing" method="post" enctype="multipart/form-data" class="space-y-6">
+        @Html.AntiForgeryToken()
+        <style>.validation-summary-valid { display: none; }</style>
+        <div asp-validation-summary="All" class="p-4 bg-red-900/40 border border-red-500/40 text-red-300 rounded-xl text-sm"></div>
+
+        <!-- Basic Info -->
+        <div class="glass-card rounded-2xl p-6">
+            <h2 class="text-lg font-bold text-white mb-5 border-b border-white/10 pb-3">
+                <i class="fa-solid fa-info-circle text-gold-500 mr-2"></i> Basic Information
+            </h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm text-gray-400 mb-2">Property Title <span class="text-red-400">*</span></label>
+                    <input type="text" name="Title" value="@Model.Title" required class="agent-input" placeholder="e.g. Azure Sky Penthouse">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-400 mb-2">Description <span class="text-red-400">*</span></label>
+                    <textarea name="Description" rows="5" required class="agent-input resize-none" placeholder="Describe the property...">@Model.Description</textarea>
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-400 mb-2">Property Type <span class="text-red-400">*</span></label>
+                    <select name="PropertyType" required class="agent-input agent-select">
+                        <option value="house"      selected="@(Model.PropertyType == "house")">House</option>
+                        <option value="apartment"  selected="@(Model.PropertyType == "apartment")">Apartment</option>
+                        <option value="plot"       selected="@(Model.PropertyType == "plot")">Plot</option>
+                        <option value="commercial" selected="@(Model.PropertyType == "commercial")">Commercial Space</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status -->
+        <div class="glass-card rounded-2xl p-6">
+            <h2 class="text-lg font-bold text-white mb-5 border-b border-white/10 pb-3">
+                <i class="fa-solid fa-tag text-gold-500 mr-2"></i> Property Status
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                @foreach (var (val, label, icon) in new[]{("buy","For Buy","fa-tag"),("rent","For Rent","fa-key"),("sell","For Sale","fa-briefcase")})
+                {
+                    <label class="cursor-pointer">
+                        <input type="radio" name="Status" value="@val" class="peer hidden" @(Model.Status == val || (Model.Status == null && val == "buy") ? "checked" : "")>
+                        <div class="border-2 border-white/10 peer-checked:border-gold-500 peer-checked:bg-gold-500/5 rounded-xl p-4 text-center transition-theme hover:border-gold-500/50">
+                            <i class="fa-solid @icon text-2xl text-gold-500 mb-2"></i>
+                            <div class="font-semibold text-white text-sm">@label</div>
+                        </div>
+                    </label>
+                }
+            </div>
+        </div>
+
+        <!-- Location -->
+        <div class="glass-card rounded-2xl p-6">
+            <h2 class="text-lg font-bold text-white mb-5 border-b border-white/10 pb-3">
+                <i class="fa-solid fa-location-dot text-gold-500 mr-2"></i> Location
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm text-gray-400 mb-2">Region</label>
+                    <select name="Region" class="agent-input agent-select">
+                        <option value="sindh">Sindh</option>
+                        <option value="punjab">Punjab</option>
+                        <option value="kpk">KPK</option>
+                        <option value="balochistan">Balochistan</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-400 mb-2">City</label>
+                    <select name="City" class="agent-input agent-select">
+                        <option value="karachi">Karachi</option>
+                        <option value="lahore">Lahore</option>
+                        <option value="islamabad">Islamabad</option>
+                        <option value="peshawar">Peshawar</option>
+                        <option value="quetta">Quetta</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label class="block text-sm text-gray-400 mb-2">Full Address <span class="text-red-400">*</span></label>
+                <input type="text" name="Address" value="@Model.Address" required class="agent-input" placeholder="Street address, block, area">
+            </div>
+        </div>
+
+        <!-- Details -->
+        <div class="glass-card rounded-2xl p-6">
+            <h2 class="text-lg font-bold text-white mb-5 border-b border-white/10 pb-3">
+                <i class="fa-solid fa-list text-gold-500 mr-2"></i> Property Details
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div>
+                    <label class="block text-sm text-gray-400 mb-2">Price (PKR) <span class="text-red-400">*</span></label>
+                    <input type="number" name="Price" value="@Model.Price" required class="agent-input" placeholder="0">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-400 mb-2">Bedrooms</label>
+                    <input type="number" name="Bedrooms" value="@Model.Bedrooms" class="agent-input" min="0">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-400 mb-2">Bathrooms</label>
+                    <input type="number" name="Bathrooms" value="@Model.Bathrooms" class="agent-input" min="0">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-400 mb-2">Area (sqft)</label>
+                    <input type="number" name="AreaSqft" value="@Model.AreaSqft" class="agent-input" min="0">
+                </div>
+            </div>
+        </div>
+
+        <!-- Amenities -->
+        <div class="glass-card rounded-2xl p-6">
+            <h2 class="text-lg font-bold text-white mb-5 border-b border-white/10 pb-3">
+                <i class="fa-solid fa-star text-gold-500 mr-2"></i> Amenities
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                @foreach (var (val, label, icon) in new[]{("wifi","WiFi","fa-wifi"),("gym","Gym","fa-dumbbell"),("pool","Swimming Pool","fa-swimmer"),("security","Security","fa-shield-alt"),("elevator","Elevator","fa-sort"),("garden","Garden","fa-leaf")})
+                {
+                    <label class="flex items-center gap-3 cursor-pointer glass-card rounded-xl px-4 py-3 border border-white/5 hover:border-gold-500/30 transition-theme">
+                        <input type="checkbox" name="Amenities" value="@val" class="rounded border-white/20 bg-transparent accent-yellow-400">
+                        <i class="fas @icon text-gold-500"></i>
+                        <span class="text-sm text-gray-300">@label</span>
+                    </label>
+                }
+            </div>
+        </div>
+
+        <!-- Images -->
+        <div class="glass-card rounded-2xl p-6">
+            <h2 class="text-lg font-bold text-white mb-5 border-b border-white/10 pb-3">
+                <i class="fa-regular fa-images text-gold-500 mr-2"></i> Property Images
+            </h2>
+            <div class="border-2 border-dashed border-white/10 hover:border-gold-500/50 rounded-xl p-10 text-center transition-theme cursor-pointer"
+                 onclick="document.getElementById('imgInput').click()">
+                <i class="fa-solid fa-cloud-arrow-up text-4xl text-gold-500 mb-3"></i>
+                <p class="text-white font-medium mb-1">Click to upload or drag & drop</p>
+                <p class="text-xs text-gray-500">JPG, PNG, WEBP — max 5MB each</p>
+                <input type="file" id="imgInput" name="Images" class="hidden" multiple accept="image/*">
+            </div>
+            <div id="previewContainer" class="flex flex-wrap gap-3 mt-4"></div>
+        </div>
+
+        <!-- Submit -->
+        <div class="flex justify-end gap-3 pb-8">
+            <a asp-controller="Agent" asp-action="MyListings" class="btn-outline-agent px-8 py-3">Cancel</a>
+            <button type="submit" class="btn-gold-agent px-8 py-3">
+                <i class="fa-solid fa-check"></i> Publish Listing
+            </button>
+        </div>
+    </form>
+</main>
+
+@section Scripts {
+<script>
+    document.getElementById('imgInput').addEventListener('change', function() {
+        const c = document.getElementById('previewContainer');
+        c.innerHTML = '';
+        Array.from(this.files).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = e => {
+                const d = document.createElement('div');
+                d.className = 'w-20 h-20 rounded-lg overflow-hidden flex-shrink-0';
+                d.innerHTML = `<img src="${e.target.result}" class="w-full h-full object-cover">`;
+                c.appendChild(d);
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+</script>
+}

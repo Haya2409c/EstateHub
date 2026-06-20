@@ -1,0 +1,561 @@
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\appsettings.json
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.staticwebassets.runtime.json
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.staticwebassets.endpoints.json
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.exe
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.deps.json
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.runtimeconfig.json
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.pdb
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\rpswa.dswa.cache.json
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.GeneratedMSBuildEditorConfig.editorconfig
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.AssemblyInfoInputs.cache
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.AssemblyInfo.cs
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.csproj.CoreCompileInputs.cache
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.MvcApplicationPartsAssemblyInfo.cache
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.RazorAssemblyInfo.cache
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.RazorAssemblyInfo.cs
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\rjimswa.dswa.cache.json
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\scopedcss\bundle\RealtorsPortal.styles.css
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\staticwebassets.build.json
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\staticwebassets.build.json.cache
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\staticwebassets.development.json
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\swae.build.ex.cache
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.dll
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\refint\RealtorsPortal.dll
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.pdb
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.genruntimeconfig.cache
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\ref\RealtorsPortal.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Azure.Core.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Azure.Identity.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Humanizer.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\Mono.TextTemplating.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\System.CodeDom.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\System.Composition.Convention.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\System.Composition.Hosting.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\System.Composition.Runtime.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\System.Composition.TypedParts.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\System.Drawing.Common.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\System.Memory.Data.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\System.Runtime.Caching.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\System.Security.Permissions.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\System.Windows.Extensions.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+E:\RealtorsPortal\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.csproj.AssemblyReference.cache
+E:\RealtorsPortal\RealtorsPortal\obj\Debug\net8.0\Realtors.955421A1.Up2Date
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\appsettings.json
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.staticwebassets.endpoints.json
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.staticwebassets.runtime.json
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.exe
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.deps.json
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.runtimeconfig.json
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.pdb
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Azure.Core.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Azure.Identity.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Humanizer.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Mono.TextTemplating.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.CodeDom.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Composition.Convention.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Composition.Hosting.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Composition.Runtime.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Composition.TypedParts.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Drawing.Common.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Memory.Data.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Runtime.Caching.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Security.Permissions.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Windows.Extensions.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+E:\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.csproj.AssemblyReference.cache
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\rpswa.dswa.cache.json
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.GeneratedMSBuildEditorConfig.editorconfig
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.AssemblyInfoInputs.cache
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.AssemblyInfo.cs
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.csproj.CoreCompileInputs.cache
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.MvcApplicationPartsAssemblyInfo.cache
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.RazorAssemblyInfo.cache
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.RazorAssemblyInfo.cs
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\rjimswa.dswa.cache.json
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\scopedcss\bundle\RealtorsPortal.styles.css
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\staticwebassets.build.json
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\staticwebassets.build.json.cache
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\staticwebassets.development.json
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\swae.build.ex.cache
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\Realtors.955421A1.Up2Date
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.dll
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\refint\RealtorsPortal.dll
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.pdb
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.genruntimeconfig.cache
+E:\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\ref\RealtorsPortal.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.staticwebassets.endpoints.json
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\appsettings.json
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.staticwebassets.runtime.json
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.exe
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.deps.json
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.runtimeconfig.json
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.pdb
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Azure.Core.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Azure.Identity.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Humanizer.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Mono.TextTemplating.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.CodeDom.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Composition.Convention.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Composition.Hosting.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Composition.Runtime.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Composition.TypedParts.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Drawing.Common.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Memory.Data.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Runtime.Caching.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Security.Permissions.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\System.Windows.Extensions.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.csproj.AssemblyReference.cache
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\rpswa.dswa.cache.json
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.GeneratedMSBuildEditorConfig.editorconfig
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.AssemblyInfoInputs.cache
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.AssemblyInfo.cs
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.csproj.CoreCompileInputs.cache
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.MvcApplicationPartsAssemblyInfo.cache
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.RazorAssemblyInfo.cache
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.RazorAssemblyInfo.cs
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\rjimswa.dswa.cache.json
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\scopedcss\bundle\RealtorsPortal.styles.css
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\staticwebassets.build.json
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\staticwebassets.build.json.cache
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\staticwebassets.development.json
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\swae.build.ex.cache
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\Realtors.955421A1.Up2Date
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\refint\RealtorsPortal.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.pdb
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.genruntimeconfig.cache
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\ref\RealtorsPortal.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\MailKit.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\MimeKit.dll
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\bin\Debug\net8.0\appsettings.example.json
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.sourcelink.json
+E:\Theme integrate\RealtorsPortal backend\RealtorsPortal\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\appsettings.example.json
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\appsettings.json
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.staticwebassets.endpoints.json
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.staticwebassets.runtime.json
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.exe
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.deps.json
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.runtimeconfig.json
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\RealtorsPortal.pdb
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Azure.Core.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Azure.Identity.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Humanizer.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\MailKit.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\MimeKit.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\Mono.TextTemplating.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\System.CodeDom.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\System.Composition.Convention.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\System.Composition.Hosting.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\System.Composition.Runtime.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\System.Composition.TypedParts.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\System.Drawing.Common.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\System.Memory.Data.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\System.Runtime.Caching.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\System.Security.Permissions.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\System.Windows.Extensions.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.csproj.AssemblyReference.cache
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\rpswa.dswa.cache.json
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.GeneratedMSBuildEditorConfig.editorconfig
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.AssemblyInfoInputs.cache
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.AssemblyInfo.cs
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.csproj.CoreCompileInputs.cache
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.MvcApplicationPartsAssemblyInfo.cache
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.RazorAssemblyInfo.cache
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.RazorAssemblyInfo.cs
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.sourcelink.json
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\rjimswa.dswa.cache.json
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\scopedcss\bundle\RealtorsPortal.styles.css
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\staticwebassets.build.json
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\staticwebassets.build.json.cache
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\staticwebassets.development.json
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\swae.build.ex.cache
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\Realtors.955421A1.Up2Date
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\refint\RealtorsPortal.dll
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.pdb
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\RealtorsPortal.genruntimeconfig.cache
+E:\Theme integrate\RealtorsPortal backend 20-06-2026\RealtorsPortal\obj\Debug\net8.0\ref\RealtorsPortal.dll

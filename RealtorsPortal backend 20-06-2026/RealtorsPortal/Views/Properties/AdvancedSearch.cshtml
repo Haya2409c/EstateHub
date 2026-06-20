@@ -1,0 +1,356 @@
+@model RealtorsPortal.Models.ViewModels.Properties.AdvancedSearchViewModel
+@{
+    ViewData["Title"] = "Advanced Search";
+    var f = Model.Filters;
+    var selectedAmenities = f.Amenities.ToHashSet();
+}
+
+<!-- Page Header -->
+<section class="pt-40 pb-20 bg-deep relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+        <img src="https://images.unsplash.com/photo-1613490900233-141c5040e67e?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover">
+    </div>
+    <div class="absolute inset-0 bg-[#1E3A5F]/60"></div>
+    <div class="container mx-auto px-6 relative z-10 text-center">
+        <span class="text-gold uppercase tracking-[0.3em] text-sm font-semibold mb-4 block" data-aos="fade-up">Find Your</span>
+        <h1 class="text-white text-5xl md:text-7xl font-bold mb-6" data-aos="fade-up" data-aos-delay="100">Advanced <span class="text-gold italic font-normal">Search</span></h1>
+        <p class="max-w-2xl mx-auto text-lg text-white/85" data-aos="fade-up" data-aos-delay="200">Specify exactly what you're looking for to find the perfect property tailored to your needs.</p>
+    </div>
+</section>
+
+<!-- Advanced Search Form -->
+<section class="py-20 container mx-auto px-6 max-w-5xl">
+    <div class="glass-panel p-8 md:p-12 rounded-3xl" data-aos="fade-up">
+        <form asp-controller="Properties" asp-action="AdvancedSearch" method="get">
+
+            <!-- Row 1: Keyword, Location, Type, Status -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 border-b border-gray-200 pb-8">
+
+                <!-- Keyword -->
+                <div>
+                    <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-3">Keyword</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fas fa-search text-gray-500"></i>
+                        </div>
+                        <input type="text" name="keyword" value="@f.Keyword"
+                               placeholder="e.g. Pool, Beachfront"
+                               class="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-4 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors">
+                    </div>
+                </div>
+
+                <!-- Location -->
+                <div>
+                    <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-3">Location</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fas fa-map-marker-alt text-gray-500"></i>
+                        </div>
+                        <select name="city" class="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-10 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors appearance-none">
+                            <option value="">All Locations</option>
+                            @foreach (var opt in f.LocationOptions)
+                            {
+                                <option value="@opt.Value" selected="@(f.Location == opt.Value ? "selected" : null)">@opt.Label</option>
+                            }
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+                            <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Type -->
+                <div>
+                    <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-3">Property Type</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fas fa-home text-gray-500"></i>
+                        </div>
+                        <select name="type" class="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-10 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors appearance-none">
+                            <option value="">All Types</option>
+                            @foreach (var opt in f.PropertyTypeOptions)
+                            {
+                                <option value="@opt.Value" selected="@(f.PropertyType == opt.Value ? "selected" : null)">@opt.Label (@opt.Count)</option>
+                            }
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+                            <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status -->
+                <div>
+                    <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-3">Status</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fas fa-tag text-gray-500"></i>
+                        </div>
+                        <select name="status" class="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-10 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors appearance-none">
+                            <option value="">Any Status</option>
+                            <option value="buy" selected="@(f.Status == "buy" ? "selected" : null)">For Sale</option>
+                            <option value="rent" selected="@(f.Status == "rent" ? "selected" : null)">For Rent</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+                            <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: Price, Beds, Baths, Area -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 border-b border-gray-200 pb-8">
+
+                <!-- Price Range -->
+                <div class="lg:col-span-2">
+                    <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-3">Price Range (PKR)</label>
+                    <div class="flex items-center gap-4">
+                        <input type="number" name="minprice" value="@f.MinPrice" min="0"
+                               placeholder="Min Price"
+                               class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors">
+                        <span class="text-gray-500 flex-shrink-0">—</span>
+                        <input type="number" name="maxprice" value="@f.MaxPrice" min="0"
+                               placeholder="Max Price"
+                               class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors">
+                    </div>
+                </div>
+
+                <!-- Bedrooms -->
+                <div>
+                    <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-3">Bedrooms</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fas fa-bed text-gray-500"></i>
+                        </div>
+                        <select name="beds" class="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-10 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors appearance-none">
+                            <option value="">Any</option>
+                            @foreach (var n in new[]{1,2,3,4,5})
+                            {
+                                <option value="@n" selected="@(f.MinBedrooms == n ? "selected" : null)">@n+</option>
+                            }
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+                            <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bathrooms -->
+                <div>
+                    <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-3">Bathrooms</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fas fa-bath text-gray-500"></i>
+                        </div>
+                        <select name="baths" class="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-10 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors appearance-none">
+                            <option value="">Any</option>
+                            @foreach (var n in new[]{1,2,3,4,5})
+                            {
+                                <option value="@n" selected="@(f.MinBathrooms == n ? "selected" : null)">@n+</option>
+                            }
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+                            <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Area Size -->
+                <div class="lg:col-span-2">
+                    <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-3">Area Size (Sq Ft)</label>
+                    <div class="flex items-center gap-4">
+                        <input type="number" name="minarea" value="@f.MinArea" min="0"
+                               placeholder="Min Sq Ft"
+                               class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors">
+                        <span class="text-gray-500 flex-shrink-0">—</span>
+                        <input type="number" name="maxarea" value="@f.MaxArea" min="0"
+                               placeholder="Max Sq Ft"
+                               class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-navy outline-none text-gray-800 transition-colors">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Amenities -->
+            <div class="mb-10">
+                <label class="block text-xs text-[#4a5568] uppercase tracking-widest font-bold mb-6">Must-Have Amenities</label>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    @{
+                        var amenityOptions = new[]
+                        {
+                            ("pool",     "fa-swimmer",    "Swimming Pool"),
+                            ("gym",      "fa-dumbbell",   "Gym / Fitness"),
+                            ("wifi",     "fa-wifi",       "WiFi"),
+                            ("garden",   "fa-leaf",       "Garden"),
+                            ("security", "fa-shield-alt", "24/7 Security"),
+                            ("elevator", "fa-sort",       "Elevator"),
+                        };
+                    }
+                    @foreach (var (val, icon, lbl) in amenityOptions)
+                    {
+                        var isChecked = selectedAmenities.Contains(val);
+                        <label class="flex flex-col items-center gap-2 cursor-pointer p-4 rounded-xl border-2 transition-colors @(isChecked ? "border-[#D4AF37] bg-[#D4AF37]/10" : "border-gray-200 bg-white hover:border-[#D4AF37]/50")">
+                            <input type="checkbox" name="amenities" value="@val"
+                                   class="sr-only"
+                                   @(isChecked ? "checked" : "")
+                                   onchange="this.closest('label').classList.toggle('border-[#D4AF37]', this.checked); this.closest('label').classList.toggle('bg-[#D4AF37]/10', this.checked); this.closest('label').classList.toggle('border-gray-200', !this.checked);">
+                            <i class="fas @icon text-xl @(isChecked ? "text-[#D4AF37]" : "text-gray-400")"></i>
+                            <span class="text-xs text-center text-[#4a5568] font-medium">@lbl</span>
+                        </label>
+                    }
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="text-center">
+                <button type="submit" class="btn-gold !py-4 !px-12 text-lg font-bold shadow-[0_10px_30px_rgba(212,175,55,0.3)] hover:shadow-[0_10px_40px_rgba(212,175,55,0.5)]">
+                    <i class="fas fa-search mr-2"></i> Find Properties
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- Results -->
+@if (Model.HasSearched)
+{
+    <section class="pb-20 container mx-auto px-6 max-w-6xl">
+
+        <!-- Results header -->
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h2 class="font-outfit font-bold text-2xl text-[#1E3A5F]">Search Results</h2>
+                <p class="text-[#718096] text-sm mt-1">
+                    @if (Model.ResultsCount == 0)
+                    {
+                        <span>No properties found matching your criteria.</span>
+                    }
+                    else
+                    {
+                        <span>@Model.ResultsCount propert@(Model.ResultsCount == 1 ? "y" : "ies") found</span>
+                    }
+                </p>
+            </div>
+            @if (Model.ResultsCount > 0)
+            {
+                <a asp-controller="Properties" asp-action="Index"
+                   class="text-sm text-[#2563EB] hover:underline font-medium">
+                    View All Listings <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            }
+        </div>
+
+        @if (Model.Results.Any())
+        {
+            <!-- Property Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+                @foreach (var p in Model.Results)
+                {
+                    var statusColor = p.Status == "rent" ? "bg-green-500" : p.Status == "buy" ? "bg-blue-500" : "bg-[#D4AF37]";
+                    var statusLabel = p.Status == "rent" ? "For Rent" : p.Status == "buy" ? "For Buy" : "For Sale";
+                    <a asp-controller="Properties" asp-action="Details" asp-route-id="@p.Id"
+                       class="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow group block">
+                        <div class="relative overflow-hidden">
+                            @if (!string.IsNullOrEmpty(p.ThumbnailUrl))
+                            {
+                                <img src="@p.ThumbnailUrl" alt="@p.Title"
+                                     class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300"
+                                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                                <div class="w-full h-52 bg-gray-100 items-center justify-center" style="display:none">
+                                    <i class="fas fa-home text-gray-300 text-4xl"></i>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="w-full h-52 bg-gray-100 flex items-center justify-center">
+                                    <i class="fas fa-home text-gray-300 text-4xl"></i>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(p.Status))
+                            {
+                                <span class="absolute top-3 left-3 @statusColor text-white text-xs font-bold px-3 py-1 rounded-full">@statusLabel</span>
+                            }
+                            @if (p.PropertyType != null)
+                            {
+                                <span class="absolute top-3 right-3 bg-white/90 text-[#1E3A5F] text-xs font-semibold px-3 py-1 rounded-full">@p.PropertyType</span>
+                            }
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-outfit font-bold text-[#1E3A5F] mb-1 line-clamp-1">@p.Title</h3>
+                            <p class="text-[#718096] text-xs mb-3 flex items-center gap-1">
+                                <i class="fas fa-map-marker-alt text-[#D4AF37]"></i>
+                                <span class="line-clamp-1">@p.Address</span>
+                            </p>
+                            <p class="font-bold text-[#D4AF37] text-xl mb-4">PKR @p.Price.ToString("N0")</p>
+                            <div class="flex items-center gap-4 text-xs text-[#718096] border-t border-gray-100 pt-3">
+                                @if (p.Bedrooms.HasValue)
+                                {
+                                    <span><i class="fas fa-bed mr-1 text-[#2563EB]"></i>@p.Bedrooms Bed</span>
+                                }
+                                @if (p.Bathrooms.HasValue)
+                                {
+                                    <span><i class="fas fa-bath mr-1 text-[#2563EB]"></i>@p.Bathrooms Bath</span>
+                                }
+                                @if (p.AreaSqft.HasValue)
+                                {
+                                    <span><i class="fas fa-ruler-combined mr-1 text-[#2563EB]"></i>@p.AreaSqft sqft</span>
+                                }
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+
+            <!-- Pagination -->
+            @if (Model.Pagination.TotalPages > 1)
+            {
+                <div class="flex justify-center items-center gap-2">
+                    @if (Model.Pagination.HasPreviousPage)
+                    {
+                        <button onclick="goToPage(@Model.Pagination.PreviousPage)"
+                                class="px-4 py-2 rounded-xl border border-gray-200 text-[#1E3A5F] text-sm font-semibold hover:border-[#1E3A5F] transition-colors">
+                            <i class="fas fa-chevron-left mr-1"></i> Prev
+                        </button>
+                    }
+                    @for (int i = 1; i <= Model.Pagination.TotalPages; i++)
+                    {
+                        var isCurrent = i == Model.Pagination.CurrentPage;
+                        <button onclick="goToPage(@i)"
+                                class="w-10 h-10 rounded-xl text-sm font-semibold transition-colors @(isCurrent ? "bg-[#1E3A5F] text-white" : "border border-gray-200 text-[#1E3A5F] hover:border-[#1E3A5F]")">
+                            @i
+                        </button>
+                    }
+                    @if (Model.Pagination.HasNextPage)
+                    {
+                        <button onclick="goToPage(@Model.Pagination.NextPage)"
+                                class="px-4 py-2 rounded-xl border border-gray-200 text-[#1E3A5F] text-sm font-semibold hover:border-[#1E3A5F] transition-colors">
+                            Next <i class="fas fa-chevron-right ml-1"></i>
+                        </button>
+                    }
+                </div>
+            }
+        }
+        else
+        {
+            <!-- Empty state -->
+            <div class="text-center py-20">
+                <i class="fas fa-search text-5xl text-gray-300 mb-4"></i>
+                <h3 class="font-outfit font-bold text-xl text-[#1E3A5F] mb-2">No Properties Found</h3>
+                <p class="text-[#718096] mb-6">Try adjusting your search criteria or removing some filters.</p>
+                <a asp-controller="Properties" asp-action="AdvancedSearch"
+                   class="inline-block px-6 py-3 bg-[#1E3A5F] text-white rounded-xl text-sm font-semibold hover:bg-[#2D4A8A] transition-colors">
+                    Clear Filters
+                </a>
+            </div>
+        }
+    </section>
+}
+
+@section Scripts {
+    <script>
+        function goToPage(page) {
+            var url = new URL(window.location.href);
+            url.searchParams.set('page', page);
+            window.location.href = url.toString();
+        }
+    </script>
+}
